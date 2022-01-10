@@ -1,0 +1,5 @@
+package com.daviteq.vizuo_portable.entity;
+
+public class Animal {
+
+}

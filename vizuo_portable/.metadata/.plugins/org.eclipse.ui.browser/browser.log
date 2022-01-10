@@ -1,0 +1,101 @@
+
+Jan 03, 2022 17:13:44.49 NEW SESSION
+Jan 03, 2022 17:13:44.49 [14352:5188:0103/171344.488:ERROR:chrome_browser_main_extra_parts_metrics.cc(226)] crbug.com/1216328: Checking Bluetooth availability started. Please report if there is no report that this ends.
+Jan 03, 2022 17:13:44.49 [14352:1288:0103/171344.495:ERROR:device_event_log_impl.cc(214)] [17:13:44.495] Bluetooth: bluetooth_adapter_winrt.cc:1075 Getting Default Adapter failed.
+Jan 03, 2022 17:13:44.49 [14352:5188:0103/171344.495:ERROR:chrome_browser_main_extra_parts_metrics.cc(229)] crbug.com/1216328: Checking Bluetooth availability ended.
+Jan 03, 2022 17:13:44.49 [14352:5188:0103/171344.495:ERROR:chrome_browser_main_extra_parts_metrics.cc(232)] crbug.com/1216328: Checking default browser status started. Please report if there is no report that this ends.
+Jan 03, 2022 17:13:44.49 [14352:5188:0103/171344.496:ERROR:chrome_browser_main_extra_parts_metrics.cc(236)] crbug.com/1216328: Checking default browser status ended.
+
+Jan 04, 2022 14:59:45.89 NEW SESSION
+Jan 04, 2022 14:59:45.89 [6836:12220:0104/145945.880:ERROR:chrome_browser_main_extra_parts_metrics.cc(226)] crbug.com/1216328: Checking Bluetooth availability started. Please report if there is no report that this ends.
+Jan 04, 2022 14:59:45.90 [6836:12220:0104/145945.895:ERROR:chrome_browser_main_extra_parts_metrics.cc(229)] crbug.com/1216328: Checking Bluetooth availability ended.
+Jan 04, 2022 14:59:45.90 [6836:12220:0104/145945.895:ERROR:chrome_browser_main_extra_parts_metrics.cc(232)] crbug.com/1216328: Checking default browser status started. Please report if there is no report that this ends.
+Jan 04, 2022 14:59:45.90 [6836:12220:0104/145945.897:ERROR:chrome_browser_main_extra_parts_metrics.cc(236)] crbug.com/1216328: Checking default browser status ended.
+Jan 04, 2022 14:59:45.91 [6836:3896:0104/145945.914:ERROR:device_event_log_impl.cc(214)] [14:59:45.914] Bluetooth: bluetooth_adapter_winrt.cc:1075 Getting Default Adapter failed.
+Jan 04, 2022 15:02:09.13 [13336:15180:0104/150209.137:ERROR:chrome_browser_main_extra_parts_metrics.cc(226)] crbug.com/1216328: Checking Bluetooth availability started. Please report if there is no report that this ends.
+Jan 04, 2022 15:02:09.13 [13336:15180:0104/150209.137:ERROR:chrome_browser_main_extra_parts_metrics.cc(229)] crbug.com/1216328: Checking Bluetooth availability ended.
+Jan 04, 2022 15:02:09.14 [13336:15180:0104/150209.142:ERROR:chrome_browser_main_extra_parts_metrics.cc(232)] crbug.com/1216328: Checking default browser status started. Please report if there is no report that this ends.
+Jan 04, 2022 15:02:09.14 [13336:11024:0104/150209.145:ERROR:device_event_log_impl.cc(214)] [15:02:09.145] Bluetooth: bluetooth_adapter_winrt.cc:1075 Getting Default Adapter failed.
+Jan 04, 2022 15:02:09.14 [13336:15180:0104/150209.145:ERROR:chrome_browser_main_extra_parts_metrics.cc(236)] crbug.com/1216328: Checking default browser status ended.
+
+Jan 05, 2022 15:01:14.31 NEW SESSION
+Jan 05, 2022 15:01:14.31 [11924:15528:0105/150114.316:ERROR:chrome_browser_main_extra_parts_metrics.cc(226)] crbug.com/1216328: Checking Bluetooth availability started. Please report if there is no report that this ends.
+Jan 05, 2022 15:01:14.33 [11924:15528:0105/150114.319:ERROR:chrome_browser_main_extra_parts_metrics.cc(229)] crbug.com/1216328: Checking Bluetooth availability ended.
+Jan 05, 2022 15:01:14.33 [11924:15528:0105/150114.319:ERROR:chrome_browser_main_extra_parts_metrics.cc(232)] crbug.com/1216328: Checking default browser status started. Please report if there is no report that this ends.
+Jan 05, 2022 15:01:14.33 [11924:15528:0105/150114.320:ERROR:chrome_browser_main_extra_parts_metrics.cc(236)] crbug.com/1216328: Checking default browser status ended.
+Jan 05, 2022 15:01:14.34 [11924:5008:0105/150114.347:ERROR:device_event_log_impl.cc(214)] [15:01:14.348] Bluetooth: bluetooth_adapter_winrt.cc:1075 Getting Default Adapter failed.
+Jan 05, 2022 15:48:08.52 [5732:13760:0105/154808.526:ERROR:chrome_browser_main_extra_parts_metrics.cc(226)] crbug.com/1216328: Checking Bluetooth availability started. Please report if there is no report that this ends.
+Jan 05, 2022 15:48:08.52 [5732:13760:0105/154808.526:ERROR:chrome_browser_main_extra_parts_metrics.cc(229)] crbug.com/1216328: Checking Bluetooth availability ended.
+Jan 05, 2022 15:48:08.52 [5732:13760:0105/154808.527:ERROR:chrome_browser_main_extra_parts_metrics.cc(232)] crbug.com/1216328: Checking default browser status started. Please report if there is no report that this ends.
+Jan 05, 2022 15:48:08.53 [5732:14200:0105/154808.537:ERROR:device_event_log_impl.cc(214)] [15:48:08.537] Bluetooth: bluetooth_adapter_winrt.cc:1075 Getting Default Adapter failed.
+Jan 05, 2022 15:48:08.54 [5732:13760:0105/154808.543:ERROR:chrome_browser_main_extra_parts_metrics.cc(236)] crbug.com/1216328: Checking default browser status ended.
+
+Jan 06, 2022 14:55:35.26 NEW SESSION
+Jan 06, 2022 14:55:35.26 [7900:6456:0106/145534.978:ERROR:chrome_browser_main_extra_parts_metrics.cc(227)] START: ReportBluetoothAvailability(). If you don't see the END: message, this is crbug.com/1216328.
+Jan 06, 2022 14:55:35.27 [7900:6456:0106/145535.269:ERROR:chrome_browser_main_extra_parts_metrics.cc(230)] END: ReportBluetoothAvailability()
+Jan 06, 2022 14:55:35.27 [7900:6456:0106/145535.269:ERROR:chrome_browser_main_extra_parts_metrics.cc(235)] START: GetDefaultBrowser(). If you don't see the END: message, this is crbug.com/1216328.
+Jan 06, 2022 14:55:35.30 [7900:4644:0106/145535.300:ERROR:device_event_log_impl.cc(214)] [14:55:35.300] Bluetooth: bluetooth_adapter_winrt.cc:1075 Getting Default Adapter failed.
+Jan 06, 2022 14:55:35.30 [7900:6456:0106/145535.303:ERROR:chrome_browser_main_extra_parts_metrics.cc(239)] END: GetDefaultBrowser()
+Jan 06, 2022 15:45:51.76 [10076:5880:0106/154551.763:ERROR:chrome_browser_main_extra_parts_metrics.cc(227)] START: ReportBluetoothAvailability(). If you don't see the END: message, this is crbug.com/1216328.
+Jan 06, 2022 15:45:51.76 [10076:5880:0106/154551.764:ERROR:chrome_browser_main_extra_parts_metrics.cc(230)] END: ReportBluetoothAvailability()
+Jan 06, 2022 15:45:51.78 [10076:2152:0106/154551.771:ERROR:device_event_log_impl.cc(214)] [15:45:51.771] Bluetooth: bluetooth_adapter_winrt.cc:1075 Getting Default Adapter failed.
+Jan 06, 2022 15:45:51.78 [10076:5880:0106/154551.773:ERROR:chrome_browser_main_extra_parts_metrics.cc(235)] START: GetDefaultBrowser(). If you don't see the END: message, this is crbug.com/1216328.
+Jan 06, 2022 15:45:51.78 [10076:5880:0106/154551.775:ERROR:chrome_browser_main_extra_parts_metrics.cc(239)] END: GetDefaultBrowser()
+
+Jan 07, 2022 14:42:45.10 NEW SESSION
+Jan 07, 2022 14:42:45.10 [10612:1536:0107/144245.100:ERROR:chrome_browser_main_extra_parts_metrics.cc(227)] START: ReportBluetoothAvailability(). If you don't see the END: message, this is crbug.com/1216328.
+Jan 07, 2022 14:42:45.10 [10612:1536:0107/144245.100:ERROR:chrome_browser_main_extra_parts_metrics.cc(230)] END: ReportBluetoothAvailability()
+Jan 07, 2022 14:42:45.10 [10612:1536:0107/144245.100:ERROR:chrome_browser_main_extra_parts_metrics.cc(235)] START: GetDefaultBrowser(). If you don't see the END: message, this is crbug.com/1216328.
+Jan 07, 2022 14:42:45.10 [10612:1536:0107/144245.102:ERROR:chrome_browser_main_extra_parts_metrics.cc(239)] END: GetDefaultBrowser()
+Jan 07, 2022 14:42:45.21 [10612:15460:0107/144245.215:ERROR:device_event_log_impl.cc(214)] [14:42:45.215] Bluetooth: bluetooth_adapter_winrt.cc:1075 Getting Default Adapter failed.
+Jan 07, 2022 14:49:19.20 [10884:14600:0107/144919.206:ERROR:chrome_browser_main_extra_parts_metrics.cc(227)] START: ReportBluetoothAvailability(). If you don't see the END: message, this is crbug.com/1216328.
+Jan 07, 2022 14:49:19.20 [10884:14600:0107/144919.207:ERROR:chrome_browser_main_extra_parts_metrics.cc(230)] END: ReportBluetoothAvailability()
+Jan 07, 2022 14:49:23.85 [10884:14600:0107/144919.210:ERROR:chrome_browser_main_extra_parts_metrics.cc(235)] START: GetDefaultBrowser(). If you don't see the END: message, this is crbug.com/1216328.
+Jan 07, 2022 14:49:23.85 [10884:14600:0107/144919.212:ERROR:chrome_browser_main_extra_parts_metrics.cc(239)] END: GetDefaultBrowser()
+Jan 07, 2022 14:49:23.85 [10884:11864:0107/144919.216:ERROR:device_event_log_impl.cc(214)] [14:49:19.215] Bluetooth: bluetooth_adapter_winrt.cc:1075 Getting Default Adapter failed.
+Jan 07, 2022 14:55:49.05 [11304:4016:0107/145549.058:ERROR:chrome_browser_main_extra_parts_metrics.cc(227)] START: ReportBluetoothAvailability(). If you don't see the END: message, this is crbug.com/1216328.
+Jan 07, 2022 14:55:49.06 [11304:4016:0107/145549.059:ERROR:chrome_browser_main_extra_parts_metrics.cc(230)] END: ReportBluetoothAvailability()
+Jan 07, 2022 14:55:49.08 [11304:4016:0107/145549.061:ERROR:chrome_browser_main_extra_parts_metrics.cc(235)] START: GetDefaultBrowser(). If you don't see the END: message, this is crbug.com/1216328.
+Jan 07, 2022 14:55:49.08 [11304:4016:0107/145549.062:ERROR:chrome_browser_main_extra_parts_metrics.cc(239)] END: GetDefaultBrowser()
+Jan 07, 2022 14:55:49.08 [11304:10676:0107/145549.065:ERROR:device_event_log_impl.cc(214)] [14:55:49.065] Bluetooth: bluetooth_adapter_winrt.cc:1075 Getting Default Adapter failed.
+Jan 07, 2022 15:00:32.00 [14812:8420:0107/150032.005:ERROR:chrome_browser_main_extra_parts_metrics.cc(227)] START: ReportBluetoothAvailability(). If you don't see the END: message, this is crbug.com/1216328.
+Jan 07, 2022 15:00:32.00 [14812:8420:0107/150032.005:ERROR:chrome_browser_main_extra_parts_metrics.cc(230)] END: ReportBluetoothAvailability()
+Jan 07, 2022 15:00:32.00 [14812:8420:0107/150032.005:ERROR:chrome_browser_main_extra_parts_metrics.cc(235)] START: GetDefaultBrowser(). If you don't see the END: message, this is crbug.com/1216328.
+Jan 07, 2022 15:00:32.00 [14812:8420:0107/150032.009:ERROR:chrome_browser_main_extra_parts_metrics.cc(239)] END: GetDefaultBrowser()
+Jan 07, 2022 15:00:32.03 [14812:6084:0107/150032.012:ERROR:device_event_log_impl.cc(214)] [15:00:32.011] Bluetooth: bluetooth_adapter_winrt.cc:1075 Getting Default Adapter failed.
+
+Jan 07, 2022 15:57:38.45 NEW SESSION
+Jan 07, 2022 15:57:38.45 [4080:12356:0107/155738.449:ERROR:chrome_browser_main_extra_parts_metrics.cc(227)] START: ReportBluetoothAvailability(). If you don't see the END: message, this is crbug.com/1216328.
+Jan 07, 2022 15:57:38.46 [4080:5048:0107/155738.466:ERROR:device_event_log_impl.cc(214)] [15:57:38.466] Bluetooth: bluetooth_adapter_winrt.cc:1075 Getting Default Adapter failed.
+Jan 07, 2022 15:57:38.48 [4080:12356:0107/155738.466:ERROR:chrome_browser_main_extra_parts_metrics.cc(230)] END: ReportBluetoothAvailability()
+Jan 07, 2022 15:57:38.48 [4080:12356:0107/155738.466:ERROR:chrome_browser_main_extra_parts_metrics.cc(235)] START: GetDefaultBrowser(). If you don't see the END: message, this is crbug.com/1216328.
+Jan 07, 2022 15:57:38.48 [4080:12356:0107/155738.473:ERROR:chrome_browser_main_extra_parts_metrics.cc(239)] END: GetDefaultBrowser()
+Jan 07, 2022 16:03:47.35 [16364:14400:0107/160347.357:ERROR:chrome_browser_main_extra_parts_metrics.cc(227)] START: ReportBluetoothAvailability(). If you don't see the END: message, this is crbug.com/1216328.
+Jan 07, 2022 16:03:47.36 [16364:1072:0107/160347.367:ERROR:device_event_log_impl.cc(214)] [16:03:47.367] Bluetooth: bluetooth_adapter_winrt.cc:1075 Getting Default Adapter failed.
+Jan 07, 2022 16:03:47.37 [16364:14400:0107/160347.371:ERROR:chrome_browser_main_extra_parts_metrics.cc(230)] END: ReportBluetoothAvailability()
+Jan 07, 2022 16:03:47.37 [16364:14400:0107/160347.371:ERROR:chrome_browser_main_extra_parts_metrics.cc(235)] START: GetDefaultBrowser(). If you don't see the END: message, this is crbug.com/1216328.
+Jan 07, 2022 16:03:47.37 [16364:14400:0107/160347.373:ERROR:chrome_browser_main_extra_parts_metrics.cc(239)] END: GetDefaultBrowser()
+Jan 07, 2022 16:09:47.71 [15856:1952:0107/160947.713:ERROR:chrome_browser_main_extra_parts_metrics.cc(227)] START: ReportBluetoothAvailability(). If you don't see the END: message, this is crbug.com/1216328.
+Jan 07, 2022 16:09:47.72 [15856:1952:0107/160947.720:ERROR:chrome_browser_main_extra_parts_metrics.cc(230)] END: ReportBluetoothAvailability()
+Jan 07, 2022 16:09:47.72 [15856:1952:0107/160947.721:ERROR:chrome_browser_main_extra_parts_metrics.cc(235)] START: GetDefaultBrowser(). If you don't see the END: message, this is crbug.com/1216328.
+Jan 07, 2022 16:09:47.72 [15856:11720:0107/160947.723:ERROR:device_event_log_impl.cc(214)] [16:09:47.723] Bluetooth: bluetooth_adapter_winrt.cc:1075 Getting Default Adapter failed.
+Jan 07, 2022 16:09:47.72 [15856:1952:0107/160947.724:ERROR:chrome_browser_main_extra_parts_metrics.cc(239)] END: GetDefaultBrowser()
+
+Jan 08, 2022 10:53:33.17 NEW SESSION
+Jan 08, 2022 10:53:33.17 [15632:9264:0108/105333.168:ERROR:chrome_browser_main_extra_parts_metrics.cc(227)] START: ReportBluetoothAvailability(). If you don't see the END: message, this is crbug.com/1216328.
+Jan 08, 2022 10:53:33.17 [15632:9264:0108/105333.174:ERROR:chrome_browser_main_extra_parts_metrics.cc(230)] END: ReportBluetoothAvailability()
+Jan 08, 2022 10:53:33.17 [15632:9264:0108/105333.174:ERROR:chrome_browser_main_extra_parts_metrics.cc(235)] START: GetDefaultBrowser(). If you don't see the END: message, this is crbug.com/1216328.
+Jan 08, 2022 10:53:33.17 [15632:9264:0108/105333.175:ERROR:chrome_browser_main_extra_parts_metrics.cc(239)] END: GetDefaultBrowser()
+Jan 08, 2022 10:53:33.18 [15632:1600:0108/105333.179:ERROR:device_event_log_impl.cc(214)] [10:53:33.180] Bluetooth: bluetooth_adapter_winrt.cc:1075 Getting Default Adapter failed.
+Jan 08, 2022 10:56:14.43 [14256:8400:0108/105614.437:ERROR:chrome_browser_main_extra_parts_metrics.cc(227)] START: ReportBluetoothAvailability(). If you don't see the END: message, this is crbug.com/1216328.
+Jan 08, 2022 10:56:14.43 [14256:8400:0108/105614.438:ERROR:chrome_browser_main_extra_parts_metrics.cc(230)] END: ReportBluetoothAvailability()
+Jan 08, 2022 10:56:14.44 [14256:8400:0108/105614.440:ERROR:chrome_browser_main_extra_parts_metrics.cc(235)] START: GetDefaultBrowser(). If you don't see the END: message, this is crbug.com/1216328.
+Jan 08, 2022 10:56:14.46 [14256:8400:0108/105614.443:ERROR:chrome_browser_main_extra_parts_metrics.cc(239)] END: GetDefaultBrowser()
+Jan 08, 2022 10:56:14.46 [14256:4916:0108/105614.445:ERROR:device_event_log_impl.cc(214)] [10:56:14.445] Bluetooth: bluetooth_adapter_winrt.cc:1075 Getting Default Adapter failed.
+
+Jan 08, 2022 11:52:20.08 NEW SESSION
+Jan 08, 2022 11:52:20.08 [6436:7864:0108/115220.073:ERROR:chrome_browser_main_extra_parts_metrics.cc(227)] START: ReportBluetoothAvailability(). If you don't see the END: message, this is crbug.com/1216328.
+Jan 08, 2022 11:52:20.10 [6436:7708:0108/115220.107:ERROR:device_event_log_impl.cc(214)] [11:52:20.107] Bluetooth: bluetooth_adapter_winrt.cc:1075 Getting Default Adapter failed.
+Jan 08, 2022 11:52:20.12 [6436:7864:0108/115220.116:ERROR:chrome_browser_main_extra_parts_metrics.cc(230)] END: ReportBluetoothAvailability()
+Jan 08, 2022 11:52:20.12 [6436:7864:0108/115220.116:ERROR:chrome_browser_main_extra_parts_metrics.cc(235)] START: GetDefaultBrowser(). If you don't see the END: message, this is crbug.com/1216328.
+Jan 08, 2022 11:52:20.12 [6436:7864:0108/115220.118:ERROR:chrome_browser_main_extra_parts_metrics.cc(239)] END: GetDefaultBrowser()

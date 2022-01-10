@@ -1,0 +1,35 @@
+@media (max-width: 1300px) {
+  .hidden-1300,
+  tr.hidden-1300,
+  th.hidden-1300,
+  td.hidden-1300 {
+    display: none !important;
+  }
+}
+
+@media (max-width: 1000px) {
+  .hidden-1000,
+  tr.hidden-1000,
+  th.hidden-1000,
+  td.hidden-1000 {
+    display: none !important;
+  }
+}
+@media (max-width: 800px) {
+  .hidden-800,
+  tr.hidden-800,
+  th.hidden-800,
+  td.hidden-800 {
+    display: none !important;
+  }
+}
+
+@media (max-width: 700px) {
+  .hidden-700,
+  tr.hidden-700,
+  th.hidden-700,
+  td.hidden-700 {
+    display: none !important;
+  }
+}
+.form-filter .form-group {margin-bottom: 0px; !important}

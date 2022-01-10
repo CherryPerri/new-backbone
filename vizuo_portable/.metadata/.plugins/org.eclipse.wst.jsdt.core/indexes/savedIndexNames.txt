@@ -1,0 +1,8 @@
+INDEX VERSION 1.4+D:\Daviteq Job\Project Spring mvc\vizuo_portable\.metadata\.plugins\org.eclipse.wst.jsdt.core\indexes
+2719052353.index
+1946602864.index
+3962853639.index
+1213679963.index
+1793380638.index
+3576401010.index
+3116397900.index

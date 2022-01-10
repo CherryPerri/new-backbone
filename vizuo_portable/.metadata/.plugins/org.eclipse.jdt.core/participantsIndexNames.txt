@@ -1,0 +1,7 @@
+INDEX VERSION 1.131
+D:\Daviteq Job\Project Spring mvc\vizuo_portable\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\1649315320.index
+\vizuo_portable\src\main\java
+D:\Daviteq Job\Project Spring mvc\vizuo_portable\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\2849082030.index
+\vizuo_portable\src\main\java
+D:\Daviteq Job\Project Spring mvc\vizuo_portable\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\1946602864.index
+\vizuo_portable\src\main\java
