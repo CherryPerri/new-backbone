@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- OFF   :: 0-->
+<!-- FATAL :: 100-->
+<!-- ERROR :: 200-->
+<!-- WARN  :: 300-->
+<!-- INFO  :: 400-->
+<!-- DEBUG :: 500-->
+<!-- TRACE :: 600-->
+<!-- ALL   :: MAX_VALUE-->
+
+<Configuration status="WARN">
+    <Properties>
+        <Property name="log-path">D://ThanhUy/logs/vizuo-portable</Property>
+        <Property name="log-name">vizuo-portable</Property>
+        
+        <Property name="spring-framework-log-name">spring-framework</Property>
+        <Property name="log_pattern_1">%d{dd-MM-yyyy HH:mm:ss} %-5p %class{36}(%L) : %m%n</Property>
+        <Property name="log_pattern_1">%d{yyyy-MM-dd HH:mm:ss} %-5p %class{36}(%L) : %m%n</Property>
+        <Property name="log_pattern_2">%d{yyyy-MM-dd HH:mm:ss} %-5p %c{1}(%L) : %m%n</Property>
+        <Property name="log_pattern_3">%d{yyyy-MM-dd HH:mm:ss} %-5level %class{36} %L %M => %msg%xEx%n</Property>
+    </Properties>
+    
+    <Appenders>
+        <RollingFile name="ROLLING-FILE"
+                     fileName="${log-path}/${log-name}.log"
+                     filePattern="${log-path}/$${date:yyyy-MM}/${log-name}-%d{MM-dd-yyyy}-%i.log.zip">
+             <PatternLayout>
+                <pattern>${log_pattern_1}</pattern>
+            </PatternLayout>
+            <Policies>
+				<TimeBasedTriggeringPolicy />
+				<OnStartupTriggeringPolicy />
+                <SizeBasedTriggeringPolicy size="50MB" />
+                
+            </Policies>
+            <DefaultRolloverStrategy max="10" />
+        </RollingFile>
+        
+        <Console name="CONSOLE" target="SYSTEM_OUT" follow="true">
+        	<ThresholdFilter level="DEBUG" onMatch="ACCEPT" onMismatch="DENY"/>
+            <PatternLayout>
+                <pattern>${log_pattern_1}</pattern>
+            </PatternLayout>
+        </Console>
+        
+    </Appenders>
+	
+    <Loggers>
+		<Logger name="com.rongviet.broker" level="DEBUG" includeLocation="true">
+            <AppenderRef ref="ROLLING-FILE"/>
+            <AppenderRef ref="CONSOLE"/>
+        </Logger >
+        
+        <Logger name="io.netty" level="WARN" includeLocation="true">
+            <AppenderRef ref="CONSOLE"/>
+        </Logger >
+        
+        <Logger name="reactor.netty" level="WARN" includeLocation="true">
+            <AppenderRef ref="CONSOLE"/>
+        </Logger >
+        
+        <Logger name="org.springframework" level="WARN" includeLocation="true">
+        	<AppenderRef ref="ROLLING-FILE"/>
+            <AppenderRef ref="CONSOLE"/>
+        </Logger >
+        
+        <Root level="WARN">
+        </Root>
+        
+    </Loggers>
+    
+</Configuration>

@@ -1,0 +1,14 @@
+ebug Eclipse Application" description="Debug Eclipse Application" category="_PEld3mx0Eeyp8vUk4R1diw"/>
+  <commands xmi:id="_PEwdGWx0Eeyp8vUk4R1diw" elementId="org.eclipse.userstorage.ui.showPullDown" commandName="Show Pull Down Menu" category="_PEld-Wx0Eeyp8vUk4R1diw">
+    <parameters xmi:id="_PEwdGmx0Eeyp8vUk4R1diw" elementId="intoolbar" name="In Tool Bar" optional="false"/>
+  </commands>
+  <commands xmi:id="_PEwdG2x0Eeyp8vUk4R1diw" elementId="org.eclipse.jpt.jpa.ui.makePersistent" commandName="Make Persistent..." category="_PEld6Gx0Eeyp8vUk4R1diw"/>
+  <commands xmi:id="_PEwdHGx0Eeyp8vUk4R1diw" elementId="org.eclipse.datatools.sqltools.sqleditor.ExecuteSelectionAction" commandName="Execute Selected Text" category="_PEmE4Gx0Eeyp8vUk4R1diw"/>
+  <commands xmi:id="_PEwdHWx0Eeyp8vUk4R1diw" elementId="org.eclipse.jpt.jaxb.ui.command.createPackageInfo" commandName="Create package-info.java" category="_PEld6Gx0Eeyp8vUk4R1diw"/>
+  <commands xmi:id="_PEwdHmx0Eeyp8vUk4R1diw" elementId="org.eclipse.jdt.ui.edit.text.java.extract.class" commandName="Extract Class..." description="Extracts fields into a new class" category="_PEld92x0Eeyp8vUk4R1diw"/>
+  <commands xmi:id="_PEwdH2x0Eeyp8vUk4R1diw" elementId="org.eclipse.jdt.ui.correction.extractConstant.assist" commandName="Quick Assist - Extract constant" description="Invokes quick assist and selects 'Extract constant'" category="_PEmE5Gx0Eeyp8vUk4R1diw"/>
+  <commands xmi:id="_PEwdIGx0Eeyp8vUk4R1diw" elementId="org.eclipse.recommenders.rcp.commands.extensionDiscovery" commandName="Discover New Extensions" category="_PEld6Gx0Eeyp8vUk4R1diw">
+    <parameters xmi:id="_PEwdIWx0Eeyp8vUk4R1diw" elementId="org.eclipse.recommenders.utils.rcp.linkContribution.href" name="URI" optional="false"/>
+  </commands>
+  <commands xmi:id="_PEwdImx0Eeyp8vUk4R1diw" elementId="org.eclipse.compare.copyRightToLeft" commandName="Copy from Right to Left" description="Copy Current Change from Right to Left" category="_PEld9Gx0Eeyp8vUk4R1diw"/>
+  <commands xmi:id="_PEwdI2x0Eeyp8vUk4R1diw" elementId=

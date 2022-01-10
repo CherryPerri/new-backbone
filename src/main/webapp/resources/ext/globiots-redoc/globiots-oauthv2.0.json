@@ -1,0 +1,622 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "title": "Globiots Authorization API",
+        "description": { "$ref": "globiots-oauthv2.0-introduction.md" },
+
+        "license": { "name": "Copyright Globiots 2021. All rights reserved" },
+        "version": "",
+        "x-logo": {
+          "url": "https://vizuo.globiots.com/resources/img/daviteq-icon/logo/logo_report_01.png",
+          "altText": "Globiots logo"
+        }
+    },
+    "host": "authorization.globiots.com",
+    "schemes": ["https"],
+    "basePath": "/",
+    "produces": ["application/json"],
+    "securityDefinitions": {
+       
+    },
+   
+    "paths": {
+
+		"/rest/api/v1/login/usernameOrEmail/{usernameOrEmail}/password/{encryptedPassword}":{
+			"post": {
+				"operationId": "Login",
+                "description": "Pages that take md5hash online:\n\n http://www.md5online.org/md5-encrypt.html \n\n http://www.md5.cz/ \n\n Data types for dates formatted according to Epoch time, refer to the address: \n\n http://www.epochconverter.com/epoch/clock.php",
+				"parameters": [
+					{
+                        "name": "usernameOrEmail",
+                        "in": "path",
+                        "required": true,
+                        "type": "string",
+                        "description": "username login"
+                    },
+					{
+                        "name": "password",
+                        "in": "path",
+                        "required": true,
+                        "type": "string",
+                        "description": "password according to the rules \n\n `md5hash(usernameOrEmail + password).toUpperCase()`"
+                    }
+				],
+				"responses": {
+				    "200": {
+                        "description": "Contains an object with a Basic Authentication header request.",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "responseMessage": {
+                   
+                                    "default": "Success",
+                                    "type": "string"
+                                },
+                                "responseCode": {
+                                   "default": 200,
+                                   "type": "integer",
+                                    "enum": ["200: Success", "409: Data not found", "500: Internal server error"] 
+                        
+                                },
+                                "account": { "$ref": "#/definitions/AccountInfo" },
+                                "user": { "$ref": "#/definitions/UserInfo" },
+                            }
+                        },
+                        "examples": {
+                            "application/json": { 
+                                 "responseMessage": "Success",
+                                    "responseCode": 200,
+                                    "account": {
+                                        "id": "account-2d4ded58-f099-4989-8ad3-70a223ff23a9",
+                                        "name": "DEMO OFFICE",
+                                        "address": "XCVV",
+                                        "country": "VN",
+                                        "province": "AN_GIANG",
+                                        "postalCode": "6666",
+                                        "faxNumber": "",
+                                        "emailAddress": "sales.pm.41@daviteq.com",
+                                        "createdDate": 1473925903589,
+                                        "lastUpdated": 1488794486739,
+                                        "expiredDate": null,
+                                        "status": "ACT",
+                                        "timeZone": "GMT+07:00",
+                                        "timeZoneName": "GMT+07:00",
+                                        "firstDayOfWeek": "MONDAY",
+                                        "beginTimeOfDay": "06:00",
+                                        "dateFormat": "dd/MM/yyyy",
+                                        "timeFormat": "HH:mm:ss",
+                                        "keepAliveTime": 300,
+                                        "realtimeRefreshTime": 1,
+                                        "deviceUsed": 6,
+                                        "userUsed": 10,
+                                        "parentId": "account-e4f64944-e638-4251-bf30-e85a1b5fef22",
+                                        "packageId": "package-a49d499f-8bf9-4aa4-baae-0ba653c2ca6f",
+                                        "nextHostname": "0.0.0.60",
+                                        "isActivedEmailAddress": false,
+                                        "appKey": "app-key-420ec00f-fd0b-41f0-ab6d-45ab8df45e2f",
+                                        "secretKey": "secret-key-5df9c18a-76b9-4214-b454-c49db4274b1c"
+                                    },
+                                    "user": {
+                                        "id": "user-7266966c-77b3-4e22-bb63-39e6232d26f0",
+                                        "fullName": "DEMO OFFICE",
+                                        "dateOfBirth": 884649600000,
+                                        "gender": "male",
+                                        "contactNumber": "+846502270",
+                                        "language": "en",
+                                        "username": "demooffice",
+                                        "password": "7BFCE32BE0CD842AA06E16DAB94C6D0B",
+                                        "failSignInAttempt": 0,
+                                        "emailAddress": "sales.pm.41@gmail.com",
+                                        "lastUpdated": 1513837330925,
+                                        "lastSignedIn": 1522054238414,
+                                        "createdDate": 1473925903610,
+                                        "isPasswordExpired": null,
+                                        "isActivedEmailAddress": true,
+                                        "lastChangedPassword": 1489029201446,
+                                        "isChangePassword": false,
+                                        "isActivedContactNumber": false,
+                                        "isAdministrator": true,
+                                        "status": "ACT",
+                                        "accountId": "account-2d4ded58-f099-4989-8ad3-70a223ff23a9"
+                                    }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                  "$ref": "#/definitions/ErrorMessage"
+                                }
+                            }
+                        },
+                        "examples": {
+                            "application/json": {"responseMessage": "Unauthorized", "responseCode": 401 }
+                        }
+                    },
+                    "500": {
+                        "description": "An error due to an internal server error.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                  "$ref": "#/definitions/ErrorMessage"
+                                }
+                            }
+                        },
+                        "examples": {
+                            "application/json": {
+                                "responseMessage": "Internal server error",
+                                 "responseCode": 500 
+                            }
+                        }
+                    }
+				},
+                "x-code-samples": [
+                    {
+                        "lang": "NodeJs - Request",
+                        "source": "var request = require('request');\r\nvar options = {\r\n  'method': 'POST',\r\n  'url': 'https://authorization.globiots.com/rest/api/v1/login/usernameOrEmail/demooffice/password/7BFCE32BE0CD842AA06E16DAB94C6D0B'\r\n};\r\nrequest(options, function (error, response) {\r\n  if (error) throw new Error(error);\r\n  console.log(response.body);\r\n});\r\n"
+                    },
+                    {
+                        "lang": "cURL",
+                        "source": "curl --location --request POST 'https://authorization.globiots.com/rest/api/v1/login/usernameOrEmail/demooffice/password/7BFCE32BE0CD842AA06E16DAB94C6D0B'\r\n"
+                    },
+                ],
+				"tags": ["Authentication User & Get App Key and Secret Key"]
+			},
+			"parameters": []
+        },
+
+        "/oauth/token?grant_type={grant_type}&username={username}&password={password}&client_id={client_id}&client_secret={client_secret}&scope={scope}":{
+			"post": {
+				"operationId": "Get access token",
+                "description": "Get access token.",
+				"parameters": [
+					{
+                        "name": "grant_type",
+                        "in": "query",
+                        "default": "password",
+                        "required": true,
+                        "type": "string"
+                    },
+					{
+                        "name": "username",
+                        "in": "query",
+                        "required": true,
+                        "type": "string"
+                    },
+					{
+                        "name": "password",
+                        "in": "query",
+                        "required": true,
+                        "type": "string",
+                        "description": "<b>YOUR-MD5-HASH-CODE-PASSWORD</b> \n\n `md5hash(usernameOrEmail + password).toUpperCase()`"
+                    },
+					{
+                        "name": "client_id",
+                        "in": "query",
+                        "description": "<b>MY_ACCOUNT_APP_KEY</b>",
+                        "required": true,
+                        "type": "string"
+                    },
+					{
+                        "name": "client_secret",
+                        "in": "query",
+                        "required": true,
+                        "description": "<b>MY_ACCOUNT_SECRET_KEY</b>",
+                        "type": "string"
+                    },
+                    {
+                        "name": "scope",
+                        "in": "query",
+                        "required": true,
+                        "default": "read",
+                        "type": "string"
+                    }
+				],
+				"responses": {
+				    "200": {
+                        "description": "Contains an object with a Basic Authentication header request.",
+                        "schema": { "$ref": "#/definitions/AccessTokenInfo" },
+                        "examples": {
+                            "application/json": { 
+                                "access_token": "f6bf1b14-7c9c-41e6-a51e-9d2b37a5e5ad",
+                                 "token_type": "bearer",
+                                "refresh_token": "1a9c0025-ad18-4b73-94e8-e3b610a6600f",
+                                "expires_in": 1209599,
+                                "scope": "read"
+                            }
+                        }
+                    },
+                     "401": {
+                        "description": "Unauthorized.",
+                         "content": {
+                            "application/json": {
+                                "schema": {
+                                  "$ref": "#/definitions/ErrorMessage"
+                                }
+                            }
+                        },
+                        "examples": {
+                            "application/json": {
+                                "error": "invalid_client",
+                                "error_description": "Bad client credentials"
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "An error due to an internal server error.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                  "$ref": "#/definitions/ErrorMessage"
+                                }
+                            }
+                        },
+                        "examples": {
+                            "application/json": {
+                                "responseMessage": "Internal server error",
+                                 "responseCode": 500 
+                            }
+                        }
+                    }
+				},
+                 "x-code-samples": [
+                    {
+                        "lang": "NodeJs - Request",
+                        "source": "var request = require('request');\r\nvar options = {\r\n  'method': 'POST',\r\n  'url': 'https://authorization.globiots.com/oauth/token?grant_type=password&username=demooffice&password=7BFCE32BE0CD842AA06E16DAB94C6D0B&client_id=app-key-420ec00f-fd0b-41f0-ab6d-45ab8df45e2f&client_secret=secret-key-5df9c18a-76b9-4214-b454-c49db4274b1c&scope=read'\r\n};\r\nrequest(options, function (error, response) {\r\n  if (error) throw new Error(error);\r\n  console.log(response.body);\r\n});\r\n"
+                    },
+                    {
+                        "lang": "cURL",
+                        "source": "curl --location --request POST 'https://authorization.globiots.com/oauth/token?grant_type=password&username=demooffice&password=7BFCE32BE0CD842AA06E16DAB94C6D0B&client_id=app-key-420ec00f-fd0b-41f0-ab6d-45ab8df45e2f&client_secret=secret-key-5df9c18a-76b9-4214-b454-c49db4274b1c&scope=read'\r\n"
+                    },
+                ],
+				"tags": ["Access Token"]
+			},
+			"parameters": []
+        },
+		
+		"/oauth/token?grant_type={grant_type}client_id={client_id}&client_secret={client_secret}&scope={scope}&refresh_token={refresh_token}":{
+			"post": {
+				"operationId": "Refresh access token",
+                "description": "Refresh access token.",
+				"parameters": [
+					{
+                        "name": "grant_type",
+                        "in": "query",
+                        "required": true,
+                        "type": "string"
+                    },
+					
+					{
+                        "name": "client_id",
+                        "in": "query",
+                        "required": true,
+                        "type": "string"
+                    },
+					{
+                        "name": "client_secret",
+                        "in": "query",
+                        "required": true,
+                        "type": "string"
+                    },
+					{
+                        "name": "refresh_token",
+                        "in": "query",
+                        "required": true,
+                        "type": "string"
+                    },
+				],
+				"responses": {
+				    "200": {
+                        "description": "Contains an object with a Basic Authentication header request.",
+                        "schema": { "$ref": "#/definitions/AccessTokenInfo" }
+                    },
+                    "400": {
+                        "description": "Bad Request.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                  "$ref": "#/definitions/ErrorMessage"
+                                }
+                            }
+                        },
+                        "examples": {
+                            "application/json": {
+                                "error": "invalid_grant",
+                                "error_description": "Invalid refresh token: 1a9c0025-ad18-4b73-94e8-e3b610a6600f"
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "An error due to an internal server error.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                  "$ref": "#/definitions/ErrorMessage"
+                                }
+                            }
+                        },
+                        "examples": {
+                            "application/json": {
+                                "responseMessage": "Internal server error",
+                                 "responseCode": 500 
+                            }
+                        }
+                    }
+				},
+                "x-code-samples": [
+                    {
+                        "lang": "NodeJs - Request",
+                        "source": "var request = require('request');\r\nvar options = {\r\n  'method': 'POST',\r\n  'url': 'https://authorization.globiots.com/oauth/token?grant_type=refresh_token&client_id=app-key-420ec00f-fd0b-41f0-ab6d-45ab8df45e2f&client_secret=secret-key-5df9c18a-76b9-4214-b454-c49db4274b1c&scope=read&refresh_token=1a9c0025-ad18-4b73-94e8-e3b610a6600f'\r\n};\r\nrequest(options, function (error, response) {\r\n  if (error) throw new Error(error);\r\n  console.log(response.body);\r\n});\r\n"
+                    },
+                    {
+                        "lang": "cURL",
+                        "source": "curl --location --request POST 'https://authorization.globiots.com/oauth/token?grant_type=refresh_token&client_id=app-key-420ec00f-fd0b-41f0-ab6d-45ab8df45e2f&client_secret=secret-key-5df9c18a-76b9-4214-b454-c49db4274b1c&scope=read&refresh_token=1a9c0025-ad18-4b73-94e8-e3b610a6600f'\r\n"
+                    },
+                ],
+				"tags": ["Access Token"]
+			},
+			"parameters": []
+        },
+		
+		
+    },
+    "definitions": {
+        "AccountInfo": {
+            "type": "object",
+            "properties": {
+
+                "id": {
+                    "type": "string",
+                    "description": ""
+                },
+                "name": {
+                    "type": "string",
+                    "description": ""
+                },
+                "address": {
+                    "type": "string",
+                    "description": ""
+                },
+                "country": {
+                    "type": "string",
+                    "description": ""
+                },
+                "province": {
+                    "type": "string",
+                    "description": ""
+                },
+                "postalCode": {
+                    "type": "string",
+                    "description": ""
+                },
+                "faxNumber": {
+                    "type": "string",
+                    "description": ""
+                },
+                "emailAddress": {
+                    "type": "string",
+                    "description": ""
+                },
+                "createdDate": {
+                    "type": "long",
+                    "description": ""
+                },
+                "lastUpdated": {
+                    "type": "long",
+                    "description": ""
+                },
+                "expiredDate": {
+                    "type": "string",
+                    "description": ""
+                },
+                "status": {
+                    "type": "string",
+                    "description": "ACT is active LOC is locked"
+                },
+                "timeZone": {
+                    "type": "string",
+                    "description": ""
+                },
+                "timeZoneName": {
+                    "type": "string",
+                    "description": ""
+                },
+                "firstDayOfWeek": {
+                    "type": "string",
+                    "description": "Start date of the week (for report)"
+                },
+                "beginTimeOfDay": {
+                    "type": "string",
+                    "description": "Start time of the day (used for report)"
+                },
+                "dateFormat": {
+                    "type": "string",
+                    "description": ""
+                },
+                "timeFormat": {
+                    "type": "string",
+                    "description": ""
+                },
+                "keepAliveTime": {
+                    "type": "integer",
+                    "description": ""
+                },
+                "realtimeRefreshTime": {
+                    "type": "integer",
+                    "description": ""
+                },
+                "deviceUsed": {
+                    "type": "integer",
+                    "description": ""
+                },
+                "userUsed": {
+                    "type": "integer",
+                    "description": ""
+                },
+                "parentId": {
+                    "type": "string",
+                    "description": ""
+                },
+                "packageId": {
+                    "type": "string",
+                    "description": ""
+                },
+                "nextHostname": {
+                    "type": "string",
+                    "description": ""
+                },
+                "isActivedEmailAddress": {
+                    "type": "boolean",
+                    "description": ""
+                },
+                "appKey": {
+                    "type": "string",
+                    "description": ""
+                },
+                "secretKey": {
+                    "type": "string",
+                    "description": ""
+                },
+            }
+        },
+        "UserInfo": {
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "string",
+                    "description": ""
+                },
+                "fullName": {
+                    "type": "string",
+                    "description": ""
+                },
+                "dateOfBirth": {
+                    "type": "string",
+                    "description": ""
+                },
+                "gender": {
+                    "type": "string",
+                    "description": ""
+                },
+                "contactNumber": {
+                    "type": "string",
+                    "description": ""
+                },
+                "language": {
+                    "type": "string",
+                    "description": ""
+                },
+                "username": {
+                    "type": "string",
+                    "description": ""
+                },
+                "password": {
+                    "type": "string",
+                    "description": ""
+                },
+                "failSignInAttempt": {
+                    "type": "integer",
+                    "description": ""
+                },
+                "emailAddress": {
+                    "type": "string",
+                    "description": ""
+                },
+                "lastUpdated": {
+                    "type": "long",
+                    "description": ""
+                },
+                "lastSignedIn": {
+                    "type": "long",
+                    "description": ""
+                },
+                "createdDate": {
+                    "type": "long",
+                    "description": "User creation date"
+                },
+                "isPasswordExpired": {
+                    "type": "boolean",
+                    "description": ""
+                },
+                "isActivedEmailAddress": {
+                    "type": "boolean",
+                    "description": "Email exists or not."
+                },
+                "lastChangedPassword": {
+                    "type": "long",
+                    "description": ""
+                },
+                "isChangePassword": {
+                    "type": "boolean",
+                    "description": "true or false if true means the new user created the first login."
+                },
+                "isActivedContactNumber": {
+                    "type": "boolean",
+                    "description": "true or false / the phone number exist or not"
+                },
+                "isAdministrator": {
+                    "type": "boolean",
+                    "description": "true or false / is the user admin or not"
+                },
+                "status": {
+                    "type": "string",
+                    "description": "ACT is active LOC is locked"
+                },
+                "accountId": {
+                    "type": "string",
+                    "description": "The id account to which the user belongs"
+                },
+            }
+        },
+        "AccessTokenInfo": {
+            "type": "object",
+            "properties": {
+                "access_token": {
+                    "type": "string",
+                    "description": "Resources API authentication string"
+                },
+                "token_type": {
+                    "type": "string",
+                    "description": ""
+                },
+                "refresh_token": {
+                    "type": "string",
+                    "description": "The string used to refresh access token"
+                },
+                "expires_in": {
+                    "type": "integer",
+                    "description": "access token chain expiry time in milisecond"
+                },
+                "scope": {
+                    "type": "string",
+                    "description": ""
+                },
+            }
+        },
+        "ErrorMessage": {
+            "type": "object",
+            "required": [
+              "code",
+              "message"
+            ],
+            "properties": {
+              "code": {
+                "type": "number",
+                "description": "The HTTP status code"
+              },
+              "message": {
+                "description": "A description of the error",
+                "type": "string"
+              }
+            }
+        }
+    },
+    "tags": [
+
+        { "name": "Authentication User & Get App Key and Secret Key" },
+        { "name": "Access Token" }
+        
+    ]
+}

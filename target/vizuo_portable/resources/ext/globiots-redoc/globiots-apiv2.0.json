@@ -1,0 +1,2586 @@
+{
+	"swagger": "2.0",
+	"info": {
+		"title": "Globiots Resources API",
+		"description": {
+			"$ref": "globiots-apiv2.0-introduction.md"
+		},
+		"license": {
+			"name": "Copyright Globiots 2021. All rights reserved"
+		},
+		"version": "v2",
+		"x-logo": {
+			"url": "https://vizuo.globiots.com/resources/img/daviteq-icon/logo/logo_report_01.png",
+			"altText": "Globiots logo"
+		}
+	},
+	"host": "resources.globiots.com",
+	"schemes": [
+		"https"
+	],
+	"basePath": "/rest/api/public/v2",
+	"produces": [
+		"application/json"
+	],
+	"securityDefinitions": {
+		"BasicAuth": {
+			"in": "header",
+			"name": "HTTP",
+			"type": "basic",
+			"description": "This security scheme uses the standard HTTP Basic Auth authorization flow."
+		}
+	},
+	"security": [
+		{
+			"BasicAuth": [
+				"Username:<YOUR_APP_KEY>",
+				"Password:<YOUR_SECRET_KEY>"
+			]
+		}
+	],
+	"paths": {
+		"/devices/host-name/{hostname}": {
+			"get": {
+				"operationId": "Retrieve device by hostname",
+				"description": "This endpoint device infomation owned by a user.",
+				"parameters": [
+					{
+						"name": "hostname",
+						"in": "path",
+						"required": true,
+						"type": "string"
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "Contains an object with a Basic Authentication header request.",
+						"schema": {
+							"type": "object",
+							"properties": {
+								"responseMessage": {
+									"default": "Success",
+									"type": "string"
+								},
+								"responseCode": {
+									"default": 200,
+									"type": "integer",
+									"enum": [
+										"200: Success",
+										"409: Data not found",
+										"500: Internal server error"
+									]
+								},
+								"device": {
+									"$ref": "#/definitions/DeviceInfo"
+								}
+							}
+						}
+					},
+					"401": {
+						"description": "Unauthorized",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/definitions/ErrorMessage"
+								}
+							}
+						},
+						"examples": {
+							"application/json": {
+								"responseMessage": "Data not found",
+								"responseCode": 409
+							}
+						}
+					},
+					"500": {
+						"description": "An error due to an internal server error.",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/definitions/ErrorMessage"
+								}
+							}
+						},
+						"examples": {
+							"application/json": {
+								"responseMessage": "Internal server error",
+								"responseCode": 500
+							}
+						}
+					}
+				},
+				"x-code-samples": [
+					{
+						"lang": "NodeJs - Request",
+						"source": "var request = require('request');\r\nvar options = {\r\n  'method': 'GET',\r\n  'url': 'https://resources.globiots.com/rest/api/public/v2/devices/host-name/{hostname}',\r\n  'headers': {\r\n    'Authorization': 'Basic ' + Buffer.from(YOUR_APP_KEY + ':' + YOUR_SECRET_KEY).toString('base64')\r\n  }\r\n};\r\nrequest(options, function (error, response) {\r\n  if (error) throw new Error(error);\r\n  console.log(response.body);\r\n});\r\n"
+					},
+					{
+						"lang": "cURL",
+						"source": "curl --location --request GET 'https://resources.globiots.com/rest/api/public/v2/devices/host-name/{hostname}' \\ \r\n--header 'Authorization: Basic Basic $(echo -n YOUR_APP_KEY:YOUR_SECRET_KEY | base64)' \r\n"
+					}
+				],
+				"tags": [
+					"Device"
+				]
+			},
+			"parameters": []
+		},
+		"/devices/status/{status}": {
+			"get": {
+				"operationId": "Retrieve device information by status",
+				"description": "This endpoint device infomation owned by a user.",
+				"parameters": [
+					{
+						"name": "status",
+						"in": "path",
+						"required": true,
+						"type": "string",
+						"enum": [
+							"registered",
+							"attached",
+							"deattached",
+							"locked"
+						]
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "Contains an object with a Basic Authentication header request.",
+						"schema": {
+							"type": "object",
+							"properties": {
+								"responseMessage": {
+									"default": "Success",
+									"type": "string"
+								},
+								"responseCode": {
+									"default": 200,
+									"type": "integer",
+									"enum": [
+										"200: Success",
+										"409: Data not found",
+										"500: Internal server error"
+									]
+								},
+								"device": {
+									"$ref": "#/definitions/DeviceInfo"
+								}
+							}
+						}
+					},
+					"401": {
+						"description": "Unauthorized",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/definitions/ErrorMessage"
+								}
+							}
+						},
+						"examples": {
+							"application/json": {
+								"responseMessage": "Data not found",
+								"responseCode": 409
+							}
+						}
+					},
+					"500": {
+						"description": "An error due to an internal server error.",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/definitions/ErrorMessage"
+								}
+							}
+						},
+						"examples": {
+							"application/json": {
+								"responseMessage": "Internal server error",
+								"responseCode": 500
+							}
+						}
+					}
+				},
+				"x-code-samples": [
+					{
+						"lang": "NodeJs - Request",
+						"source": "var request = require('request');\r\nvar options = {\r\n  'method': 'GET',\r\n  'url': 'https://resources.globiots.com/rest/api/public/v2/devices/status/{status}',\r\n  'headers': {\r\n    'Authorization': 'Basic ' + Buffer.from(YOUR_APP_KEY + ':' + YOUR_SECRET_KEY).toString('base64')\r\n  }\r\n};\r\nrequest(options, function (error, response) {\r\n  if (error) throw new Error(error);\r\n  console.log(response.body);\r\n});\r\n"
+					},
+					{
+						"lang": "cURL",
+						"source": "curl --location --request GET 'https://resources.globiots.com/rest/api/public/v2/devices/status/{status}' \\ \r\n--header 'Authorization: Basic Basic $(echo -n YOUR_APP_KEY:YOUR_SECRET_KEY | base64)' \r\n"
+					}
+				],
+				"tags": [
+					"Device"
+				]
+			},
+			"parameters": []
+		},
+		"/devices": {
+			"get": {
+				"operationId": "Retrieve all devices",
+				"description": "This endpoint devices infomation owned by a user.",
+				"parameters": [],
+				"responses": {
+					"200": {
+						"description": "Contains an object with a Basic Authentication header request.",
+						"schema": {
+							"type": "object",
+							"properties": {
+								"responseMessage": {
+									"default": "Success",
+									"type": "string"
+								},
+								"responseCode": {
+									"default": 200,
+									"type": "integer",
+									"enum": [
+										"200: Success",
+										"409: Data not found",
+										"500: Internal server error"
+									]
+								},
+								"devices": {
+									"type": "array",
+									"items": {
+										"$ref": "#/definitions/DeviceInfo"
+									}
+								}
+							}
+						}
+					},
+					"401": {
+						"description": "Unauthorized",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/definitions/ErrorMessage"
+								}
+							}
+						},
+						"examples": {
+							"application/json": {
+								"responseMessage": "Data not found",
+								"responseCode": 409
+							}
+						}
+					},
+					"500": {
+						"description": "An error due to an internal server error.",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/definitions/ErrorMessage"
+								}
+							}
+						},
+						"examples": {
+							"application/json": {
+								"responseMessage": "Internal server error",
+								"responseCode": 500
+							}
+						}
+					}
+				},
+				"x-code-samples": [
+					{
+						"lang": "NodeJs - Request",
+						"source": "var request = require('request');\r\nvar options = {\r\n  'method': 'GET',\r\n  'url': 'https://resources.globiots.com/rest/api/public/v2/devices',\r\n  'headers': {\r\n    'Authorization': 'Basic ' + Buffer.from(YOUR_APP_KEY + ':' + YOUR_SECRET_KEY).toString('base64')\r\n  }\r\n};\r\nrequest(options, function (error, response) {\r\n  if (error) throw new Error(error);\r\n  console.log(response.body);\r\n});\r\n"
+					},
+					{
+						"lang": "cURL",
+						"source": "curl --location --request GET 'https://resources.globiots.com/rest/api/public/v2/devices' \\ \r\n--header 'Authorization: Basic Basic $(echo -n YOUR_APP_KEY:YOUR_SECRET_KEY | base64)' \r\n"
+					}
+				],
+				"tags": [
+					"Device"
+				]
+			},
+			"parameters": []
+		},
+		"/parameters/host-name/{hostname}/address/{address}": {
+			"get": {
+				"operationId": "Retrieve parameter by address",
+				"description": "This endpoint parameter infomation owned by a device of user.",
+				"parameters": [
+					{
+						"name": "hostname",
+						"in": "path",
+						"required": true,
+						"type": "string"
+					},
+					{
+						"name": "address",
+						"in": "path",
+						"required": true,
+						"type": "string"
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "Contains an object with a Basic Authentication header request.",
+						"schema": {
+							"type": "object",
+							"properties": {
+								"responseMessage": {
+									"default": "Success",
+									"type": "string"
+								},
+								"responseCode": {
+									"default": 200,
+									"type": "integer",
+									"enum": [
+										"200: Success",
+										"409: Data not found",
+										"500: Internal server error"
+									]
+								},
+								"parameter": {
+									"$ref": "#/definitions/ParameterInfo"
+								}
+							}
+						}
+					},
+					"401": {
+						"description": "Unauthorized",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/definitions/ErrorMessage"
+								}
+							}
+						},
+						"examples": {
+							"application/json": {
+								"responseMessage": "Data not found",
+								"responseCode": 409
+							}
+						}
+					},
+					"500": {
+						"description": "An error due to an internal server error.",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/definitions/ErrorMessage"
+								}
+							}
+						},
+						"examples": {
+							"application/json": {
+								"responseMessage": "Internal server error",
+								"responseCode": 500
+							}
+						}
+					}
+				},
+				"x-code-samples": [
+					{
+						"lang": "NodeJs - Request",
+						"source": "var request = require('request');\r\nvar options = {\r\n  'method': 'GET',\r\n  'url': 'https://resources.globiots.com/rest/api/public/v2/parameters/host-name/{hostname}/address/{address}',\r\n  'headers': {\r\n    'Authorization': 'Basic ' + Buffer.from(YOUR_APP_KEY + ':' + YOUR_SECRET_KEY).toString('base64')\r\n  }\r\n};\r\nrequest(options, function (error, response) {\r\n  if (error) throw new Error(error);\r\n  console.log(response.body);\r\n});\r\n"
+					},
+					{
+						"lang": "cURL",
+						"source": "curl --location --request GET 'https://resources.globiots.com/rest/api/public/v2/parameters/host-name/{hostname}/address/{address}' \\ \r\n--header 'Authorization: Basic Basic $(echo -n YOUR_APP_KEY:YOUR_SECRET_KEY | base64)' \r\n"
+					}
+				],
+				"tags": [
+					"Parameter Of Device"
+				]
+			},
+			"parameters": []
+		},
+		"/parameters/host-name/{hostname}": {
+			"get": {
+				"operationId": "Retrieve all parameter by host name",
+				"description": "This endpoint parameters infomation owned by a device of user.",
+				"parameters": [
+					{
+						"name": "hostname",
+						"in": "path",
+						"required": true,
+						"type": "string"
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "Contains an object with a Basic Authentication header request.",
+						"schema": {
+							"type": "object",
+							"properties": {
+								"responseMessage": {
+									"default": "Success",
+									"type": "string"
+								},
+								"responseCode": {
+									"default": 200,
+									"type": "integer",
+									"enum": [
+										"200: Success",
+										"409: Data not found",
+										"500: Internal server error"
+									]
+								},
+								"parameters": {
+									"type": "array",
+									"items": {
+										"$ref": "#/definitions/ParameterInfo"
+									}
+								}
+							}
+						}
+					},
+					"401": {
+						"description": "Unauthorized",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/definitions/ErrorMessage"
+								}
+							}
+						},
+						"examples": {
+							"application/json": {
+								"responseMessage": "Data not found",
+								"responseCode": 409
+							}
+						}
+					},
+					"500": {
+						"description": "An error due to an internal server error.",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/definitions/ErrorMessage"
+								}
+							}
+						},
+						"examples": {
+							"application/json": {
+								"responseMessage": "Internal server error",
+								"responseCode": 500
+							}
+						}
+					}
+				},
+				"x-code-samples": [
+					{
+						"lang": "NodeJs - Request",
+						"source": "var request = require('request');\r\nvar options = {\r\n  'method': 'GET',\r\n  'url': 'https://resources.globiots.com/rest/api/public/v2/parameters/host-name/{hostname}',\r\n  'headers': {\r\n    'Authorization': 'Basic ' + Buffer.from(YOUR_APP_KEY + ':' + YOUR_SECRET_KEY).toString('base64')\r\n  }\r\n};\r\nrequest(options, function (error, response) {\r\n  if (error) throw new Error(error);\r\n  console.log(response.body);\r\n});\r\n"
+					},
+					{
+						"lang": "cURL",
+						"source": "curl --location --request GET 'https://resources.globiots.com/rest/api/public/v2/parameters/host-name/{hostname}' \\ \r\n--header 'Authorization: Basic Basic $(echo -n YOUR_APP_KEY:YOUR_SECRET_KEY | base64)' \r\n"
+					}
+				],
+				"tags": [
+					"Parameter Of Device"
+				]
+			},
+			"parameters": []
+		},
+		"/parameters/host-name/{hostname}/logged/{logged}": {
+			"get": {
+				"operationId": "Retrieve device information according to logged status",
+				"description": "This endpoint parameters infomation owned by a device of user.",
+				"parameters": [
+					{
+						"name": "hostname",
+						"in": "path",
+						"required": true,
+						"type": "string"
+					},
+					{
+						"name": "logged",
+						"in": "path",
+						"required": true,
+						"type": "boolean",
+						"enum": [
+							true,
+							false
+						]
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "Contains an object with a Basic Authentication header request.",
+						"schema": {
+							"type": "object",
+							"properties": {
+								"responseMessage": {
+									"default": "Success",
+									"type": "string"
+								},
+								"responseCode": {
+									"default": 200,
+									"type": "integer",
+									"enum": [
+										"200: Success",
+										"409: Data not found",
+										"500: Internal server error"
+									]
+								},
+								"parameters": {
+									"type": "array",
+									"items": {
+										"$ref": "#/definitions/ParameterInfo"
+									}
+								}
+							}
+						}
+					},
+					"401": {
+						"description": "Unauthorized",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/definitions/ErrorMessage"
+								}
+							}
+						},
+						"examples": {
+							"application/json": {
+								"responseMessage": "Data not found",
+								"responseCode": 409
+							}
+						}
+					},
+					"500": {
+						"description": "An error due to an internal server error.",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/definitions/ErrorMessage"
+								}
+							}
+						},
+						"examples": {
+							"application/json": {
+								"responseMessage": "Internal server error",
+								"responseCode": 500
+							}
+						}
+					}
+				},
+				"x-code-samples": [
+					{
+						"lang": "NodeJs - Request",
+						"source": "var request = require('request');\r\nvar options = {\r\n  'method': 'GET',\r\n  'url': 'https://resources.globiots.com/rest/api/public/v2/parameters/host-name/{hostname}/logged/{logged}',\r\n  'headers': {\r\n    'Authorization': 'Basic ' + Buffer.from(YOUR_APP_KEY + ':' + YOUR_SECRET_KEY).toString('base64')\r\n  }\r\n};\r\nrequest(options, function (error, response) {\r\n  if (error) throw new Error(error);\r\n  console.log(response.body);\r\n});\r\n"
+					},
+					{
+						"lang": "cURL",
+						"source": "curl --location --request GET 'https://resources.globiots.com/rest/api/public/v2/parameters/host-name/{hostname}/logged/{logged}' \\ \r\n--header 'Authorization: Basic Basic $(echo -n YOUR_APP_KEY:YOUR_SECRET_KEY | base64)' \r\n"
+					}
+				],
+				"tags": [
+					"Parameter Of Device"
+				]
+			},
+			"parameters": []
+		},
+		"/data-log/last-value-static-table?hostname={hostname}&address={address}": {
+			"get": {
+				"operationId": "Retrieve the final data of the day",
+				"description": "Retrieve the final data of the day",
+				"parameters": [
+					{
+						"name": "hostname",
+						"in": "query",
+						"required": true,
+						"type": "string"
+					},
+					{
+						"name": "address",
+						"in": "query",
+						"required": true,
+						"type": "string"
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "Contains an object with a Basic Authentication header request.",
+						"schema": {
+							"type": "object",
+							"properties": {
+								"responseMessage": {
+									"default": "Success",
+									"type": "string"
+								},
+								"responseCode": {
+									"default": 200,
+									"type": "integer",
+									"enum": [
+										"200: Success",
+										"500: Internal server error",
+										"402: Hostname not found",
+										"408: Value of 'fromDate' field is greater than value of 'toDate' field",
+										"500: Internal server error"
+									]
+								},
+								"data": {
+									"type": "array",
+									"items": {
+										"$ref": "#/definitions/AddressLastValueDatalog"
+									}
+								}
+							}
+						},
+						"examples": {
+							"application/json": {
+								"data": [
+									{
+										"hostName": "0000016F",
+										"address": "6002",
+										"timestamp": "1624776240000",
+										"rawValue": "0.0"
+									}
+								],
+								"responseMessage": "Success",
+								"responseCode": 200
+							}
+						}
+					},
+					"401": {
+						"description": "Unauthorized",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/definitions/ErrorMessage"
+								}
+							}
+						},
+						"examples": {
+							"application/json": {
+								"responseMessage": "Data not found",
+								"responseCode": 409
+							}
+						}
+					},
+					"402": {
+						"description": "Hostname not found",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/definitions/ErrorMessage"
+								}
+							}
+						},
+						"examples": {
+							"application/json": {
+								"responseMessage": "Hostname not found",
+								"responseCode": 402
+							}
+						}
+					},
+					"408": {
+						"description": "Value of 'fromDate' field is greater than value of 'toDate' field",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/definitions/ErrorMessage"
+								}
+							}
+						},
+						"examples": {
+							"application/json": {
+								"responseMessage": "Value of 'fromDate' field is greater than value of 'toDate' field",
+								"responseCode": 408
+							}
+						}
+					},
+					"500": {
+						"description": "An error due to an internal server error.",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/definitions/ErrorMessage"
+								}
+							}
+						},
+						"examples": {
+							"application/json": {
+								"responseMessage": "Internal server error",
+								"responseCode": 500
+							}
+						}
+					}
+				},
+				"x-code-samples": [
+					{
+						"lang": "NodeJs - Request",
+						"source": "var request = require('request');\r\nvar options = {\r\n  'method': 'GET',\r\n  'url': 'https://resources.globiots.com/rest/api/public/v2/data-log/last-value-static-table?hostname={hostname}&address={address}',\r\n  'headers': {\r\n    'Authorization': 'Basic ' + Buffer.from(YOUR_APP_KEY + ':' + YOUR_SECRET_KEY).toString('base64')\r\n  }\r\n};\r\nrequest(options, function (error, response) {\r\n  if (error) throw new Error(error);\r\n  console.log(response.body);\r\n});\r\n"
+					},
+					{
+						"lang": "cURL",
+						"source": "curl --location --request GET 'https://resources.globiots.com/rest/api/public/v2/data-log/last-value-static-table?hostname={hostname}&address={address}' \\ \r\n--header 'Authorization: Basic Basic $(echo -n YOUR_APP_KEY:YOUR_SECRET_KEY | base64)' \r\n"
+					}
+				],
+				"tags": [
+					"Data Log"
+				]
+			},
+			"parameters": []
+		},
+		"/data-log/last-value-static-table": {
+			"post": {
+				"operationId": "Retrieve the final data of the day with multiple addresses",
+				"description": "Retrieve the final data of the day with multiple addresses",
+				"parameters": [
+					{
+						"name": "data",
+						"in": "body",
+						"required": true,
+						"description": "Raw body Example:  `{ \"00000001\": [\"6000\",\"6002\"],\"00000002\": [\"6000\",\"6002\"]}`",
+						"schema": {
+							"type": "object",
+							"properties": {
+								"hostname1": {
+									"description": "The hostname01 is a hostname of device 1",
+									"title": "List address of device",
+									"type": "array",
+									"items": {
+										"type": "string",
+										"minLength": 1
+									},
+									"x-example": "[\"6000\",\"6002\"]"
+								},
+								"hostname2": {
+									"description": "The hostname2 is a hostname of device 2",
+									"title": "List address of device",
+									"type": "array",
+									"items": {
+										"type": "string",
+										"minLength": 1
+									},
+									"x-example": "[\"6000\",\"6002\"]"
+								}
+							}
+						}
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "Contains an object with a Basic Authentication header request.",
+						"schema": {
+							"type": "object",
+							"properties": {
+								"responseMessage": {
+									"default": "Success",
+									"type": "string"
+								},
+								"responseCode": {
+									"default": 200,
+									"type": "integer",
+									"enum": [
+										"200: Success",
+										"500: Internal server error",
+										"402: Hostname not found",
+										"408: Value of 'fromDate' field is greater than value of 'toDate' field",
+										"500: Internal server error"
+									]
+								},
+								"data": {
+									"type": "array",
+									"items": {
+										"$ref": "#/definitions/AddressLastValueDatalog"
+									}
+								}
+							}
+						},
+						"examples": {
+							"application/json": {
+								"data": [
+									{
+										"hostName": "00000001",
+										"address": "6000",
+										"timestamp": "1624776600000",
+										"rawValue": "99"
+									},
+									{
+										"hostName": "00000001",
+										"address": "6002",
+										"timestamp": "1624776600000",
+										"rawValue": "0.0"
+									},
+									{
+										"hostName": "00000002",
+										"address": "6000"
+									},
+									{
+										"hostName": "00000002",
+										"address": "6002"
+									}
+								],
+								"responseMessage": "Success",
+								"responseCode": 200
+							}
+						}
+					},
+					"401": {
+						"description": "Unauthorized",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/definitions/ErrorMessage"
+								}
+							}
+						},
+						"examples": {
+							"application/json": {
+								"responseMessage": "Data not found",
+								"responseCode": 409
+							}
+						}
+					},
+					"402": {
+						"description": "Hostname not found",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/definitions/ErrorMessage"
+								}
+							}
+						},
+						"examples": {
+							"application/json": {
+								"responseMessage": "Hostname not found",
+								"responseCode": 402
+							}
+						}
+					},
+					"408": {
+						"description": "Value of 'fromDate' field is greater than value of 'toDate' field",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/definitions/ErrorMessage"
+								}
+							}
+						},
+						"examples": {
+							"application/json": {
+								"responseMessage": "Value of 'fromDate' field is greater than value of 'toDate' field",
+								"responseCode": 408
+							}
+						}
+					},
+					"500": {
+						"description": "An error due to an internal server error.",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/definitions/ErrorMessage"
+								}
+							}
+						},
+						"examples": {
+							"application/json": {
+								"responseMessage": "Internal server error",
+								"responseCode": 500
+							}
+						}
+					}
+				},
+				"tags": [
+					"Data Log"
+				],
+				"x-code-samples": [
+					{
+						"lang": "NodeJs - Request",
+						"source": "var request = require('request');\r\nvar options = {\r\n  'method': 'POST',\r\n  'url': 'https://resources.globiots.com/rest/api/public/v2/data-log/last-value',\r\n  'headers': {\r\n    'Authorization': 'Basic ' + Buffer.from(YOUR_APP_KEY + ':' + YOUR_SECRET_KEY).toString('base64'),\r\n    'Content-Type': 'application/json'\r\n  },\r\n  body: JSON.stringify({\r\n    \"00000001\": [\r\n      \"6000\",\r\n      \"6002\"\r\n    ],\r\n    \"00000002\": [\r\n      \"6000\",\r\n      \"6002\"\r\n    ]\r\n  })\r\n\r\n\r\n};\r\nrequest(options, function (error, response) {\r\n  if (error) throw new Error(error);\r\n  console.log(response.body);\r\n});\r\n"
+					},
+					{
+						"lang": "cURL",
+						"source": "curl --location --request POST 'https://resources.globiots.com/rest/api/public/v2/data-log/last-value-static-table' \\ \r\n--header 'Authorization: Basic $(echo -n YOUR_APP_KEY:YOUR_SECRET_KEY | base64)' \\ \r\n--header 'Content-Type: application/json' \\ \r\n--data-raw '{ \r\n    \"0000016F\": [\"6000\",\"6002\"], \r\n    \"000001BB\": [\"6000\",\"6002\"] \r\n}' \r\n"
+					}
+				]
+			},
+			"parameters": []
+		},
+		"/data-log?hostname={hostname}&address={address}&fromDate={fromDate}&toDate={toDate}": {
+			"get": {
+				"operationId": "Retrieve log data",
+				"description": "Retrieve log data",
+				"parameters": [
+					{
+						"name": "hostname",
+						"in": "query",
+						"required": true,
+						"type": "string"
+					},
+					{
+						"name": "address",
+						"in": "query",
+						"required": true,
+						"type": "string"
+					},
+					{
+						"name": "fromDate",
+						"description": "start point get data, <b>yyyyMMddHHmmss</b> format (GMT + 0). `Example: dd/MM/YYYY HH:mm:ss: 01/01/1970 12:12:60 => yyyyMMddHHmmss: 19700101121260`",
+						"in": "query",
+						"required": true,
+						"type": "string"
+					},
+					{
+						"name": "toDate",
+						"description": "end point get data, <b>yyyyMMddHHmmss</b> format (GMT + 0).  `Example: dd/MM/YYYY HH:mm:ss: 01/01/1970 12:12:60 => yyyyMMddHHmmss: 19700101121260`",
+						"in": "query",
+						"required": true,
+						"type": "string"
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "Contains an object with a Basic Authentication header request.",
+						"schema": {
+							"type": "object",
+							"properties": {
+								"responseMessage": {
+									"default": "Success",
+									"type": "string"
+								},
+								"responseCode": {
+									"default": 200,
+									"type": "integer",
+									"enum": [
+										"200: Success",
+										"500: Internal server error",
+										"402: Hostname not found",
+										"408: Value of 'fromDate' field is greater than value of 'toDate' field",
+										"500: Internal server error"
+									]
+								},
+								"resp": {
+									"$ref": "#/definitions/AddressDatalog2"
+								},
+								"fromDate": {
+									"type": "long"
+								},
+								"toDate": {
+									"type": "long"
+								}
+							}
+						},
+						"examples": {
+							"application/json": {
+								"resp": {
+									"fromDate": "20210621070000",
+									"hostname": "0000016F",
+									"address": "6000",
+									"data": [
+										[
+											1624283880000,
+											"99"
+										],
+										[
+											1624284000000,
+											"99"
+										]
+									],
+									"toDate": "20210621140000",
+									"count": 2
+								},
+								"responseCode": 200,
+								"responseMessage": ""
+							}
+						}
+					},
+					"401": {
+						"description": "Unauthorized",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/definitions/ErrorMessage"
+								}
+							}
+						},
+						"examples": {
+							"application/json": {
+								"responseMessage": "Data not found",
+								"responseCode": 409
+							}
+						}
+					},
+					"402": {
+						"description": "Hostname not found",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/definitions/ErrorMessage"
+								}
+							}
+						},
+						"examples": {
+							"application/json": {
+								"responseMessage": "Hostname not found",
+								"responseCode": 402
+							}
+						}
+					},
+					"408": {
+						"description": "Value of 'fromDate' field is greater than value of 'toDate' field",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/definitions/ErrorMessage"
+								}
+							}
+						},
+						"examples": {
+							"application/json": {
+								"responseMessage": "Value of 'fromDate' field is greater than value of 'toDate' field",
+								"responseCode": 408
+							}
+						}
+					},
+					"500": {
+						"description": "An error due to an internal server error.",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/definitions/ErrorMessage"
+								}
+							}
+						},
+						"examples": {
+							"application/json": {
+								"responseMessage": "Internal server error",
+								"responseCode": 500
+							}
+						}
+					}
+				},
+				"x-code-samples": [
+					{
+						"lang": "NodeJs - Request",
+						"source": "var request = require('request');\r\nvar options = {\r\n  'method': 'GET',\r\n  'url': 'https://resources.globiots.com/rest/api/public/v2/data-log?hostname={hostname}&address={address}&fromDate={fromDate}&toDate={toDate}',\r\n  'headers': {\r\n    'Authorization': 'Basic ' + Buffer.from(YOUR_APP_KEY + ':' + YOUR_SECRET_KEY).toString('base64')\r\n  }\r\n};\r\nrequest(options, function (error, response) {\r\n  if (error) throw new Error(error);\r\n  console.log(response.body);\r\n});\r\n"
+					},
+					{
+						"lang": "cURL",
+						"source": "curl --location --request GET 'https://resources.globiots.com/rest/api/public/v2/data-log?hostname={hostname}&address={address}&fromDate={fromDate}&toDate={toDate}' \\ \r\n--header 'Authorization: Basic Basic $(echo -n YOUR_APP_KEY:YOUR_SECRET_KEY | base64)' \r\n"
+					}
+				],
+				"tags": [
+					"Data Log"
+				]
+			},
+			"parameters": []
+		},
+		"/data-log?hostname={hostname}&fromDate={fromDate}&toDate={toDate}": {
+			"post": {
+				"operationId": "Retrieve log data by multiple address",
+				"description": "Retrieve log data by multiple address.",
+				"parameters": [
+					{
+						"name": "hostname",
+						"in": "query",
+						"required": true,
+						"type": "string"
+					},
+					{
+						"name": "fromDate",
+						"description": "start point get data, <b>yyyyMMddHHmmss</b> format (GMT + 0). `Example: dd/MM/YYYY HH:mm:ss: 01/01/1970 12:12:60 => yyyyMMddHHmmss: 19700101121260`",
+						"in": "query",
+						"required": true,
+						"type": "string"
+					},
+					{
+						"name": "toDate",
+						"description": "end point get data, <b>yyyyMMddHHmmss</b> format (GMT + 0). `Example: dd/MM/YYYY HH:mm:ss: 01/01/1970 12:12:60 => yyyyMMddHHmmss: 19700101121260`",
+						"in": "query",
+						"required": true,
+						"type": "string"
+					},
+					{
+						"name": "data",
+						"in": "body",
+						"required": true,
+						"description": "List of address,\n Example: `[\"2004\", \"2000\"]`",
+						"schema": {
+							"type": "array",
+							"items": {
+								"type": "string",
+								"minLength": 1
+							},
+							"description": "List of address"
+						},
+						"examples": {
+							"application/json": [
+								"2000",
+								"2004"
+							]
+						}
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "Contains an object with a Basic Authentication header request.",
+						"schema": {
+							"type": "object",
+							"properties": {
+								"responseMessage": {
+									"default": "Success",
+									"type": "string"
+								},
+								"responseCode": {
+									"default": 200,
+									"type": "integer",
+									"enum": [
+										"200: Success",
+										"500: Internal server error",
+										"402: Hostname not found",
+										"408: Value of 'fromDate' field is greater than value of 'toDate' field",
+										"500: Internal server error"
+									]
+								},
+								"datas": {
+									"type": "array",
+									"items": {
+										"$ref": "#/definitions/AddressDatalog"
+									}
+								},
+								"fromDate": {
+									"type": "long"
+								},
+								"toDate": {
+									"type": "long"
+								}
+							}
+						},
+						"examples": {
+							"application/json": {
+								"fromDate": "20210621070000",
+								"hostname": "0000016F",
+								"datas": [
+									{
+										"address": "2000",
+										"data": [
+											[
+												1624260480000,
+												"118880"
+											],
+											[
+												1624260600000,
+												"123960"
+											]
+										],
+										"count": 2
+									},
+									{
+										"address": "2004",
+										"data": [],
+										"count": 0
+									}
+								],
+								"toDate": "20210621073000",
+								"responseMessage": "Success",
+								"responseCode": 200
+							}
+						}
+					},
+					"401": {
+						"description": "Unauthorized",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/definitions/ErrorMessage"
+								}
+							}
+						},
+						"examples": {
+							"application/json": {
+								"responseMessage": "Data not found",
+								"responseCode": 409
+							}
+						}
+					},
+					"402": {
+						"description": "Hostname not found",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/definitions/ErrorMessage"
+								}
+							}
+						},
+						"examples": {
+							"application/json": {
+								"responseMessage": "Hostname not found",
+								"responseCode": 402
+							}
+						}
+					},
+					"408": {
+						"description": "Value of 'fromDate' field is greater than value of 'toDate' field",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/definitions/ErrorMessage"
+								}
+							}
+						},
+						"examples": {
+							"application/json": {
+								"responseMessage": "Value of 'fromDate' field is greater than value of 'toDate' field",
+								"responseCode": 408
+							}
+						}
+					},
+					"500": {
+						"description": "An error due to an internal server error.",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/definitions/ErrorMessage"
+								}
+							}
+						},
+						"examples": {
+							"application/json": {
+								"responseMessage": "Internal server error",
+								"responseCode": 500
+							}
+						}
+					}
+				},
+				"x-code-samples": [
+					{
+						"lang": "NodeJs - Request",
+						"source": "var request = require('request');\r\nvar options = {\r\n  'method': 'POST',\r\n  'url': 'https://resources.globiots.com/rest/api/public/v2/data-log?hostname={hostname}&fromDate={fromDate}&toDate={toDate}',\r\n  'headers': {\r\n    'Accept': 'application/json',\r\n    'Authorization': 'Basic ' + Buffer.from(YOUR_APP_KEY + ':' + YOUR_SECRET_KEY).toString('base64'),\r\n    'Content-Type': 'application/json'\r\n  },\r\n  body: JSON.stringify([\r\n    \"2000\",\r\n    \"2004\"\r\n  ])\r\n\r\n};\r\nrequest(options, function (error, response) {\r\n  if (error) throw new Error(error);\r\n  console.log(response.body);\r\n});\r\n"
+					},
+					{
+						"lang": "cURL",
+						"source": "curl --location --request POST 'https://resources.globiots.com/rest/api/public/v2/data-log?hostname={hostname}&fromDate={fromDate}&toDate={toDate}' \\ \r\n--header 'Accept: application/json' \\ \r\n--header 'Authorization: $(echo -n YOUR_APP_KEY:YOUR_SECRET_KEY | base64)' \\ \r\n--header 'Content-Type: application/json' \\ \r\n--data-raw '[\"2000\", \"2004\"]' \r\n"
+					}
+				],
+				"tags": [
+					"Data Log"
+				]
+			},
+			"parameters": []
+		},
+		"/memmap/host-name/{hostname}": {
+			"get": {
+				"operationId": "Retrieve all address on memory map",
+				"description": "This endpoint memory map infomation owned by a user.",
+				"parameters": [
+					{
+						"name": "hostname",
+						"in": "path",
+						"required": true,
+						"type": "string"
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "Contains an object with a Basic Authentication header request.",
+						"schema": {
+							"type": "object",
+							"properties": {
+								"responseMessage": {
+									"default": "Success",
+									"type": "string"
+								},
+								"responseCode": {
+									"default": 200,
+									"type": "integer",
+									"enum": [
+										"200: Success",
+										"409: Data not found",
+										"500: Internal server error"
+									]
+								},
+								"count": {
+									"default": 0,
+									"type": "integer",
+									"title": "Num of record"
+								},
+								"addresses": {
+									"type": "array",
+									"items": {
+										"$ref": "#/definitions/MemmapAddressInfo"
+									}
+								}
+							}
+						}
+					},
+					"401": {
+						"description": "Unauthorized",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/definitions/ErrorMessage"
+								}
+							}
+						},
+						"examples": {
+							"application/json": {
+								"responseMessage": "Data not found",
+								"responseCode": 409
+							}
+						}
+					},
+					"500": {
+						"description": "An error due to an internal server error.",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/definitions/ErrorMessage"
+								}
+							}
+						},
+						"examples": {
+							"application/json": {
+								"responseMessage": "Internal server error",
+								"responseCode": 500
+							}
+						}
+					}
+				},
+				"x-code-samples": [
+					{
+						"lang": "NodeJs - Request",
+						"source": "var request = require('request');\r\nvar options = {\r\n  'method': 'GET',\r\n  'url': 'https://resources.globiots.com/rest/api/public/v2/memmap/host-name/{hostname}',\r\n  'headers': {\r\n    'Authorization': 'Basic ' + Buffer.from(YOUR_APP_KEY + ':' + YOUR_SECRET_KEY).toString('base64')\r\n  }\r\n};\r\nrequest(options, function (error, response) {\r\n  if (error) throw new Error(error);\r\n  console.log(response.body);\r\n});\r\n"
+					},
+					{
+						"lang": "cURL",
+						"source": "curl --location --request GET 'https://resources.globiots.com/rest/api/public/v2/memmap/host-name/{hostname}' \\ \r\n--header 'Authorization: Basic Basic $(echo -n YOUR_APP_KEY:YOUR_SECRET_KEY | base64)' \r\n"
+					}
+				],
+				"tags": [
+					"Memmap Info"
+				]
+			},
+			"parameters": []
+		},
+		"/alarm-log/summary/host-name/{hostname}?fromDate={fromDate}&toDate={toDate}": {
+			"get": {
+				"operationId": "Retrieve alarm log summary data by hostname device",
+				"description": "Retrieve alarm log summary data by hostname device owned by a user.",
+				"parameters": [
+					{
+						"name": "hostname",
+						"in": "path",
+						"required": true,
+						"type": "string"
+					},
+					{
+						"name": "fromDate",
+						"description": "start point get data, <b>yyyyMMddHHmmss</b> format (GMT + 0). `Example: dd/MM/YYYY HH:mm:ss: 01/01/1970 12:12:60 => yyyyMMddHHmmss: 19700101121260`",
+						"in": "query",
+						"required": true,
+						"type": "string"
+					},
+					{
+						"name": "toDate",
+						"description": "end point get data, <b>yyyyMMddHHmmss</b> format (GMT + 0). `Example: dd/MM/YYYY HH:mm:ss: 01/01/1970 12:12:60 => yyyyMMddHHmmss: 19700101121260`",
+						"in": "query",
+						"required": true,
+						"type": "string"
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "Contains an object with a Basic Authentication header request.",
+						"schema": {
+							"type": "object",
+							"properties": {
+								"responseMessage": {
+									"default": "Success",
+									"type": "string"
+								},
+								"responseCode": {
+									"default": 200,
+									"type": "integer",
+									"enum": [
+										"200: Success",
+										"500: Internal server error",
+										"402: Hostname not found",
+										"408: Value of 'fromDate' field is greater than value of 'toDate' field",
+										"500: Internal server error"
+									]
+								},
+								"data": {
+									"type": "object",
+									"properties": {
+										"count": {
+											"default": 0,
+											"type": "integer",
+											"title": "number of record"
+										},
+										"alarm-logs": {
+											"type": "array",
+											"items": {
+												"$ref": "#/definitions/AlarmLogSummaryDataInfo"
+											}
+										}
+									}
+								}
+							}
+						}
+					},
+					"401": {
+						"description": "Unauthorized",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/definitions/ErrorMessage"
+								}
+							}
+						},
+						"examples": {
+							"application/json": {
+								"responseMessage": "Data not found",
+								"responseCode": 409
+							}
+						}
+					},
+					"402": {
+						"description": "Hostname not found",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/definitions/ErrorMessage"
+								}
+							}
+						},
+						"examples": {
+							"application/json": {
+								"responseMessage": "Hostname not found",
+								"responseCode": 402
+							}
+						}
+					},
+					"408": {
+						"description": "Value of 'fromDate' field is greater than value of 'toDate' field",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/definitions/ErrorMessage"
+								}
+							}
+						},
+						"examples": {
+							"application/json": {
+								"responseMessage": "Value of 'fromDate' field is greater than value of 'toDate' field",
+								"responseCode": 408
+							}
+						}
+					},
+					"500": {
+						"description": "An error due to an internal server error.",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/definitions/ErrorMessage"
+								}
+							}
+						},
+						"examples": {
+							"application/json": {
+								"responseMessage": "Internal server error",
+								"responseCode": 500
+							}
+						}
+					}
+				},
+				"x-code-samples": [
+					{
+						"lang": "NodeJs - Request",
+						"source": "var request = require('request');\r\nvar options = {\r\n  'method': 'GET',\r\n  'url': 'https://resources.globiots.com/rest/api/public/v2/alarm-log/summary/host-name/{hostname}?fromDate={fromDate}&toDate={toDate}',\r\n  'headers': {\r\n    'Authorization': 'Basic ' + Buffer.from(YOUR_APP_KEY + ':' + YOUR_SECRET_KEY).toString('base64')\r\n  }\r\n};\r\nrequest(options, function (error, response) {\r\n  if (error) throw new Error(error);\r\n  console.log(response.body);\r\n});\r\n"
+					},
+					{
+						"lang": "cURL",
+						"source": "curl --location --request GET 'https://resources.globiots.com/rest/api/public/v2/alarm-log/summary/host-name/{hostname}?fromDate={fromDate}&toDate={toDate}' \\ \r\n--header 'Authorization: Basic Basic $(echo -n YOUR_APP_KEY:YOUR_SECRET_KEY | base64)' \r\n"
+					}
+				],
+				"tags": [
+					"Alarm Log Data"
+				]
+			},
+			"parameters": []
+		},
+		"/alarm-log/detail/host-name/{hostname}?fromDate={fromDate}&toDate={toDate}": {
+			"get": {
+				"operationId": "Retrieve alarm log detail data by hostname device",
+				"description": "Retrieve alarm log detail data by hostname device owned by a user.",
+				"parameters": [
+					{
+						"name": "hostname",
+						"in": "path",
+						"required": true,
+						"type": "string"
+					},
+					{
+						"name": "fromDate",
+						"description": "start point get data, <b>yyyyMMddHHmmss</b> format (GMT + 0). `Example: dd/MM/YYYY HH:mm:ss: 01/01/1970 12:12:60 => yyyyMMddHHmmss: 19700101121260`",
+						"in": "query",
+						"required": true,
+						"type": "string"
+					},
+					{
+						"name": "toDate",
+						"description": "end point get data, <b>yyyyMMddHHmmss</b> format (GMT + 0). `Example: dd/MM/YYYY HH:mm:ss: 01/01/1970 12:12:60 => yyyyMMddHHmmss: 19700101121260`",
+						"in": "query",
+						"required": true,
+						"type": "string"
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "Contains an object with a Basic Authentication header request.",
+						"schema": {
+							"type": "object",
+							"properties": {
+								"responseMessage": {
+									"default": "Success",
+									"type": "string"
+								},
+								"responseCode": {
+									"default": 200,
+									"type": "integer",
+									"enum": [
+										"200: Success",
+										"500: Internal server error",
+										"402: Hostname not found",
+										"408: Value of 'fromDate' field is greater than value of 'toDate' field",
+										"500: Internal server error"
+									]
+								},
+								"data": {
+									"type": "object",
+									"properties": {
+										"count": {
+											"default": 0,
+											"type": "integer",
+											"title": "Num of record"
+										},
+										"alarm-logs": {
+											"type": "array",
+											"items": {
+												"$ref": "#/definitions/AlarmLogDetailDataInfo"
+											}
+										}
+									}
+								}
+							}
+						}
+					},
+					"401": {
+						"description": "Unauthorized",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/definitions/ErrorMessage"
+								}
+							}
+						},
+						"examples": {
+							"application/json": {
+								"responseMessage": "Data not found",
+								"responseCode": 409
+							}
+						}
+					},
+					"402": {
+						"description": "Hostname not found",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/definitions/ErrorMessage"
+								}
+							}
+						},
+						"examples": {
+							"application/json": {
+								"responseMessage": "Hostname not found",
+								"responseCode": 402
+							}
+						}
+					},
+					"408": {
+						"description": "Value of 'fromDate' field is greater than value of 'toDate' field",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/definitions/ErrorMessage"
+								}
+							}
+						},
+						"examples": {
+							"application/json": {
+								"responseMessage": "Value of 'fromDate' field is greater than value of 'toDate' field",
+								"responseCode": 408
+							}
+						}
+					},
+					"500": {
+						"description": "An error due to an internal server error.",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/definitions/ErrorMessage"
+								}
+							}
+						},
+						"examples": {
+							"application/json": {
+								"responseMessage": "Internal server error",
+								"responseCode": 500
+							}
+						}
+					}
+				},
+				"x-code-samples": [
+					{
+						"lang": "NodeJs - Request",
+						"source": "var request = require('request');\r\nvar options = {\r\n  'method': 'GET',\r\n  'url': 'https://resources.globiots.com/rest/api/public/v2/alarm-log/detail/host-name/{hostname}?fromDate={fromDate}&toDate={toDate}',\r\n  'headers': {\r\n    'Authorization': 'Basic ' + Buffer.from(YOUR_APP_KEY + ':' + YOUR_SECRET_KEY).toString('base64')\r\n  }\r\n};\r\nrequest(options, function (error, response) {\r\n  if (error) throw new Error(error);\r\n  console.log(response.body);\r\n});\r\n"
+					},
+					{
+						"lang": "cURL",
+						"source": "curl --location --request GET 'https://resources.globiots.com/rest/api/public/v2/alarm-log/detail/host-name/{hostname}?fromDate={fromDate}&toDate={toDate}' \\ \r\n--header 'Authorization: Basic Basic $(echo -n YOUR_APP_KEY:YOUR_SECRET_KEY | base64)' \r\n"
+					}
+				],
+				"tags": [
+					"Alarm Log Data"
+				]
+			},
+			"parameters": []
+		},
+		"/alarm-log/history/host-name/{hostname}?fromDate={fromDate}&toDate={toDate}": {
+			"get": {
+				"operationId": "Retrieve alarm log history data by hostname device",
+				"description": "Retrieve alarm log history data by hostname device owned by a user.",
+				"parameters": [
+					{
+						"name": "hostname",
+						"in": "path",
+						"required": true,
+						"type": "string"
+					},
+					{
+						"name": "fromDate",
+						"description": "start point get data, <b>yyyyMMddHHmmss</b> format (GMT + 0). `Example: dd/MM/YYYY HH:mm:ss: 01/01/1970 12:12:60 => yyyyMMddHHmmss: 19700101121260`",
+						"in": "query",
+						"required": true,
+						"type": "string"
+					},
+					{
+						"name": "toDate",
+						"description": "end point get data, <b>yyyyMMddHHmmss</b> format (GMT + 0). `Example: dd/MM/YYYY HH:mm:ss: 01/01/1970 12:12:60 => yyyyMMddHHmmss: 19700101121260`",
+						"in": "query",
+						"required": true,
+						"type": "string"
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "Contains an object with a Basic Authentication header request.",
+						"schema": {
+							"type": "object",
+							"properties": {
+								"responseMessage": {
+									"default": "Success",
+									"type": "string"
+								},
+								"responseCode": {
+									"default": 200,
+									"type": "integer",
+									"enum": [
+										"200: Success",
+										"500: Internal server error",
+										"402: Hostname not found",
+										"408: Value of 'fromDate' field is greater than value of 'toDate' field",
+										"500: Internal server error"
+									]
+								},
+								"data": {
+									"type": "object",
+									"properties": {
+										"count": {
+											"default": 0,
+											"type": "integer",
+											"title": "Num of record"
+										},
+										"alarm-logs": {
+											"type": "array",
+											"items": {
+												"$ref": "#/definitions/AlarmLogHistoryDataInfo"
+											}
+										}
+									}
+								}
+							}
+						}
+					},
+					"401": {
+						"description": "Unauthorized",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/definitions/ErrorMessage"
+								}
+							}
+						},
+						"examples": {
+							"application/json": {
+								"responseMessage": "Data not found",
+								"responseCode": 409
+							}
+						}
+					},
+					"402": {
+						"description": "Hostname not found",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/definitions/ErrorMessage"
+								}
+							}
+						},
+						"examples": {
+							"application/json": {
+								"responseMessage": "Hostname not found",
+								"responseCode": 402
+							}
+						}
+					},
+					"408": {
+						"description": "Value of 'fromDate' field is greater than value of 'toDate' field",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/definitions/ErrorMessage"
+								}
+							}
+						},
+						"examples": {
+							"application/json": {
+								"responseMessage": "Value of 'fromDate' field is greater than value of 'toDate' field",
+								"responseCode": 408
+							}
+						}
+					},
+					"500": {
+						"description": "An error due to an internal server error.",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/definitions/ErrorMessage"
+								}
+							}
+						},
+						"examples": {
+							"application/json": {
+								"responseMessage": "Internal server error",
+								"responseCode": 500
+							}
+						}
+					}
+				},
+				"x-code-samples": [
+					{
+						"lang": "NodeJs - Request",
+						"source": "var request = require('request');\r\nvar options = {\r\n  'method': 'GET',\r\n  'url': 'https://resources.globiots.com/rest/api/public/v2/alarm-log/history/host-name/{hostname}?fromDate={fromDate}&toDate={toDate}',\r\n  'headers': {\r\n    'Authorization': 'Basic ' + Buffer.from(YOUR_APP_KEY + ':' + YOUR_SECRET_KEY).toString('base64')\r\n  }\r\n};\r\nrequest(options, function (error, response) {\r\n  if (error) throw new Error(error);\r\n  console.log(response.body);\r\n});\r\n"
+					},
+					{
+						"lang": "cURL",
+						"source": "curl --location --request GET 'https://resources.globiots.com/rest/api/public/v2/alarm-log/history/host-name/{hostname}?fromDate={fromDate}&toDate={toDate}' \\ \r\n--header 'Authorization: Basic Basic $(echo -n YOUR_APP_KEY:YOUR_SECRET_KEY | base64)' \r\n"
+					}
+				],
+				"tags": [
+					"Alarm Log Data"
+				]
+			},
+			"parameters": []
+		},
+		"/event-log/history/host-name/{hostname}?fromDate={fromDate}&toDate={toDate}": {
+			"get": {
+				"operationId": "Retrieve event log history data by hostname device",
+				"description": "Retrieve event log history data by hostname device owned by a user.",
+				"parameters": [
+					{
+						"name": "hostname",
+						"in": "path",
+						"required": true,
+						"type": "string"
+					},
+					{
+						"name": "fromDate",
+						"description": "start point get data, <b>yyyyMMddHHmmss</b> format (GMT + 0). `Example: dd/MM/YYYY HH:mm:ss: 01/01/1970 12:12:60 => yyyyMMddHHmmss: 19700101121260`",
+						"in": "query",
+						"required": true,
+						"type": "string"
+					},
+					{
+						"name": "toDate",
+						"description": "end point get data, <b>yyyyMMddHHmmss</b> format (GMT + 0). `Example: dd/MM/YYYY HH:mm:ss: 01/01/1970 12:12:60 => yyyyMMddHHmmss: 19700101121260`",
+						"in": "query",
+						"required": true,
+						"type": "string"
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "Contains an object with a Basic Authentication header request.",
+						"schema": {
+							"type": "object",
+							"properties": {
+								"responseMessage": {
+									"default": "Success",
+									"type": "string"
+								},
+								"responseCode": {
+									"default": 200,
+									"type": "integer",
+									"enum": [
+										"200: Success",
+										"500: Internal server error",
+										"402: Hostname not found",
+										"408: Value of 'fromDate' field is greater than value of 'toDate' field",
+										"500: Internal server error"
+									]
+								},
+								"count": {
+									"default": 0,
+									"type": "integer",
+									"title": "Num of record"
+								},
+								"event-logs": {
+									"type": "array",
+									"items": {
+										"$ref": "#/definitions/EventLogHistoryDataInfo"
+									}
+								}
+							}
+						}
+					},
+					"401": {
+						"description": "Unauthorized",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/definitions/ErrorMessage"
+								}
+							}
+						},
+						"examples": {
+							"application/json": {
+								"responseMessage": "Data not found",
+								"responseCode": 409
+							}
+						}
+					},
+					"402": {
+						"description": "Hostname not found",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/definitions/ErrorMessage"
+								}
+							}
+						},
+						"examples": {
+							"application/json": {
+								"responseMessage": "Hostname not found",
+								"responseCode": 402
+							}
+						}
+					},
+					"408": {
+						"description": "Value of 'fromDate' field is greater than value of 'toDate' field",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/definitions/ErrorMessage"
+								}
+							}
+						},
+						"examples": {
+							"application/json": {
+								"responseMessage": "Value of 'fromDate' field is greater than value of 'toDate' field",
+								"responseCode": 408
+							}
+						}
+					},
+					"500": {
+						"description": "An error due to an internal server error.",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/definitions/ErrorMessage"
+								}
+							}
+						},
+						"examples": {
+							"application/json": {
+								"responseMessage": "Internal server error",
+								"responseCode": 500
+							}
+						}
+					}
+				},
+				"x-code-samples": [
+					{
+						"lang": "NodeJs - Request",
+						"source": "'use strict';\r\nvar request = require('request');\r\n\r\nvar options = {\r\n   'method': 'GET',\r\n   'url': 'https://resources.globiots.com/rest/api/public/v2/event-log/history/host-name/{hostname}?fromDate={fromDate}&toDate={toDate}',\r\n   'headers': {\r\n      'Authorization': 'Basic ' + Buffer.from(YOUR_APP_KEY + ':' + YOUR_SECRET_KEY).toString('base64')\r\n    }\r\n};\r\nrequest(options, function (error, response) {\r\n    if (error) throw new Error(error);\r\n    console.log(response.body);\r\n});\r\n"
+					},
+					{
+						"lang": "cURL",
+						"source": "curl --location --request GET 'https://resources.globiots.com/rest/api/public/v2/event-log/history/host-name/{hostname}?fromDate={fromDate}&toDate={toDate}' \\ \r\n--header 'Authorization: Basic Basic $(echo -n YOUR_APP_KEY:YOUR_SECRET_KEY | base64)' \r\n"
+					}
+				],
+				"tags": [
+					"Event Log Data"
+				]
+			},
+			"parameters": []
+		}
+	},
+	"definitions": {
+		"DeviceInfo": {
+			"required": [
+				"name"
+			],
+			"type": "object",
+			"properties": {
+				"id": {
+					"description": "identification",
+					"type": "string",
+					"readOnly": true,
+					"maxLength": 200,
+					"minLength": 1
+				},
+				"deviceName": {
+					"description": "Device Name",
+					"type": "string",
+					"maxLength": 50,
+					"minLength": 1
+				},
+				"serialNumber": {
+					"description": "serial number",
+					"type": "string"
+				},
+				"hostName": {
+					"description": "IP address of device on Globiots system.",
+					"type": "string"
+				},
+				"fcc": {
+					"description": "fcc of device on Globiots system.",
+					"type": "string"
+				},
+				"ncc": {
+					"description": "ncc of device on Globiots system.",
+					"type": "string"
+				},
+				"latitude": {
+					"description": " latitude of iConnector.",
+					"type": "string"
+				},
+				"longitude": {
+					"description": " longitude of iConnector.",
+					"type": "string"
+				},
+				"isGpsAutoUpdated": {
+					"description": "isGpsAutoUpdated",
+					"type": "boolean"
+				},
+				"phoneNumber": {
+					"description": "phone number of SIM.",
+					"type": "string"
+				},
+				"loggingSendFrequency": {
+					"description": "Log data will be sent to the server every loggingSendFrequency second cycle.",
+					"type": "integer"
+				},
+				"healthSendFrequency": {
+					"description": "Health data will be sent to the server every healthSendFrequency second cycle.",
+					"type": "integer"
+				},
+				"isLoggingChanged": {
+					"description": "Sync status of parameter.",
+					"type": "boolean"
+				},
+				"isModbusConfigChanged": {
+					"description": "Sync status of modbus.",
+					"type": "boolean"
+				},
+				"isAlarmConfigChanged": {
+					"description": "Sync status of alarm.",
+					"type": "boolean"
+				},
+				"isEventConfigChanged": {
+					"description": "Sync status of event.",
+					"type": "boolean"
+				},
+				"memmapSysnData": {
+					"description": "Sync status of memmap.",
+					"type": "boolean"
+				},
+				"createdDate": {
+					"title": "Created date.",
+					"type": "long",
+					"description": "Number of seconds since Unix Epoch",
+					"example": 1389087724
+				},
+				"lastUpdated": {
+					"title": "Last updated",
+					"type": "long",
+					"description": "Number of seconds since Unix Epoch",
+					"example": 1389087724
+				},
+				"attachedDate": {
+					"title": "Attached Date",
+					"type": "long",
+					"description": "Number of seconds since Unix Epoch",
+					"example": 1389087724
+				},
+				"lastSignedIn": {
+					"title": "Last signed in",
+					"type": "long",
+					"description": "Number of seconds since Unix Epoch",
+					"example": 1389087724
+				},
+				"status": {
+					"description": "Status of device",
+					"type": "string",
+					"enum": [
+						"registered",
+						"attached",
+						"deattached",
+						"locked"
+					]
+				},
+				"nodeId": {
+					"description": "ID of node",
+					"type": "string"
+				},
+				"memmapId": {
+					"description": "Id of memmap",
+					"type": "string"
+				},
+				"model": {
+					"description": " Iconnector model",
+					"type": "string"
+				},
+				"manufactureDate": {
+					"description": "Manufacture date",
+					"type": "string"
+				},
+				"hardwareVersion": {
+					"description": "Hardware Version",
+					"type": "string"
+				},
+				"firmwareVersion": {
+					"description": "Firmware version.",
+					"type": "string"
+				},
+				"memmapVersion": {
+					"description": "Memory map version.",
+					"type": "string"
+				},
+				"imei": {
+					"title": "IMEI of SIM on device.",
+					"type": "string"
+				},
+				"cellularNetwork": {
+					"description": "Cellular Network",
+					"type": "string"
+				},
+				"iccid": {
+					"description": "ICCID of SIM on device.",
+					"type": "string"
+				},
+				"realParameterUsed": {
+					"description": "realParameterUsed",
+					"type": "integer"
+				},
+				"virtualParameterUsed": {
+					"description": "virtualParameterUsed",
+					"type": "integer"
+				},
+				"eventUsed": {
+					"title": "eventUsed",
+					"type": "integer"
+				},
+				"alarmUsed": {
+					"title": "alarmUsed",
+					"type": "integer"
+				},
+				"thingId": {
+					"title": "thingId",
+					"type": "string"
+				}
+			}
+		},
+		"ParameterInfo": {
+			"required": [
+				"name"
+			],
+			"type": "object",
+			"properties": {
+				"id": {
+					"description": "parameter identification.",
+					"type": "string",
+					"readOnly": true,
+					"maxLength": 46,
+					"minLength": 1
+				},
+				"name": {
+					"description": "Parameter name.",
+					"type": "string"
+				},
+				"type": {
+					"description": "Parameter type.",
+					"type": "string",
+					"enum": [
+						"real_parameter",
+						"virtual_parameter"
+					]
+				},
+				"address": {
+					"description": " Address (hexa) of parameter on memory map.",
+					"type": "string"
+				},
+				"unit": {
+					"description": "Unit of parameter.",
+					"type": "string"
+				},
+				"decimalPlaces": {
+					"description": "Length of fractional.",
+					"type": "integer"
+				},
+				"dataType": {
+					"title": "Data type.",
+					"type": "string",
+					"enum": [
+						"byte",
+						"unsigned_integer_16",
+						"unsigned_integer_32",
+						"float",
+						"integer_16",
+						"integer_32",
+						"string",
+						"hexa"
+					]
+				},
+				"dataLength": {
+					"title": "Data length",
+					"type": "integer",
+					"enum": [
+						"byte => length = 1",
+						"unsigned_integer_16 => length = 2",
+						"unsigned_integer_32 => length = 4",
+						"float => length: 4",
+						"integer_16 => length = 2",
+						"integer_32 => length = 4",
+						"string => length not require",
+						"hexa => length not require"
+					]
+				},
+				"expression": {
+					"description": "Expression string defined by user 'only for virtual parameter'.",
+					"type": "string"
+				},
+				"isLogged": {
+					"description": "This is marked logged or no logged.",
+					"type": "boolean"
+				},
+				"loggingPriority": {
+					"description": "Priority 'unused'.",
+					"type": "integer"
+				},
+				"loggingFrequency": {
+					"description": "Data will be logged every 'loggingFrequency' second cycle.",
+					"type": "integer"
+				},
+				"loggingTTL": {
+					"description": "time-to-live of data.",
+					"type": "long"
+				},
+				"createdDate": {
+					"title": "createdDate",
+					"type": "long",
+					"description": "Number of seconds since Unix Epoch",
+					"example": 15323666000
+				},
+				"lastUpdated": {
+					"title": "lastUpdated",
+					"type": "long",
+					"description": "Number of seconds since Unix Epoch",
+					"example": 15323666000
+				},
+				"deviceId": {
+					"description": "Device identification.",
+					"type": "string",
+					"default": "device-..."
+				}
+			}
+		},
+		"AddressDatalog": {
+			"type": "object",
+			"properties": {
+				"address": {
+					"title": "address",
+					"type": "string"
+				},
+				"count": {
+					"description": "Num of record",
+					"type": "integer"
+				},
+				"data": {
+					"description": "The element definitions is [timestamp, value]: data array consists of 2 elements, the first element is timestamp, the next element is value.",
+					"type": "array",
+					"items": {
+						"type": "array",
+						"items": {
+							"anyOf": [
+								{
+									"title": "timestamp",
+									"type": "long"
+								},
+								{
+									"title": "value",
+									"type": "string"
+								}
+							]
+						}
+					}
+				}
+			}
+		},
+		"AddressDatalog2": {
+			"type": "object",
+			"properties": {
+				"fromDate": {
+					"title": "fromDate",
+					"type": "long"
+				},
+				"toDate": {
+					"title": "toDate",
+					"type": "long"
+				},
+				"hostname": {
+					"title": "hostname",
+					"type": "string"
+				},
+				"address": {
+					"title": "address",
+					"type": "string"
+				},
+				"count": {
+					"title": "Num of record",
+					"type": "integer"
+				},
+				"data": {
+					"description": "The element definitions is [timestamp, value]: data array consists of 2 elements, the first element is timestamp, the next element is value.",
+					"type": "array",
+					"items": {
+						"type": "array",
+						"items": {
+							"anyOf": [
+								{
+									"title": "timestamp",
+									"type": "long"
+								},
+								{
+									"title": "value",
+									"type": "string"
+								}
+							]
+						}
+					}
+				}
+			}
+		},
+		"AddressLastValueDatalog": {
+			"type": "object",
+			"properties": {
+				"timestamp": {
+					"title": "timestamp",
+					"type": "string"
+				},
+				"hostname": {
+					"title": "hostname",
+					"type": "string"
+				},
+				"address": {
+					"title": "address",
+					"type": "string"
+				},
+				"rawValue": {
+					"title": "rawValue",
+					"type": "string"
+				}
+			}
+		},
+		"MemmapAddressInfo": {
+			"type": "object",
+			"properties": {
+				"id": {
+					"title": "id",
+					"type": "string"
+				},
+				"label": {
+					"title": "label",
+					"type": "string"
+				},
+				"address": {
+					"title": "address",
+					"type": "string"
+				},
+				"value": {
+					"title": "value",
+					"type": "integer"
+				},
+				"dataType": {
+					"title": "dataType",
+					"type": "string"
+				},
+				"dataLength": {
+					"title": "dataLength",
+					"type": "integer"
+				},
+				"canRead": {
+					"title": "canRead",
+					"type": "boolean"
+				},
+				"canWrite": {
+					"title": "canWrite",
+					"type": "boolean"
+				},
+				"isChanged": {
+					"title": "isChanged",
+					"type": "boolean"
+				},
+				"createdDate": {
+					"title": "createdDate",
+					"type": "long",
+					"default": 15323666000
+				},
+				"lastUpdated": {
+					"title": "lastUpdated",
+					"type": "long",
+					"default": 15323666000
+				},
+				"deviceId": {
+					"title": "deviceId",
+					"type": "string"
+				}
+			}
+		},
+		"AlarmLogSummaryDataInfo": {
+			"type": "object",
+			"properties": {
+				"hostname": {
+					"description": "IP address of device on Globiots system.",
+					"type": "string"
+				},
+				"address": {
+					"description": "address `hexadecimal` on memory map.",
+					"type": "string"
+				},
+				"timestamp": {
+					"description": "Iime of occurence in Epoch time GMT",
+					"type": "long"
+				},
+				"comment": {
+					"description": "Alarm commentation by user",
+					"type": "string"
+				},
+				"state": {
+					"title": "state",
+					"type": "string",
+					"enum": [
+						"0 – LOLO",
+						"1 – LO",
+						"2 – NORMAL",
+						"3 – HI",
+						"4 – HIHI"
+					]
+				},
+				"value": {
+					"description": "alarm value",
+					"type": "string"
+				},
+				"status": {
+					"description": "alarm status (\"ack\")",
+					"type": "string"
+				}
+			}
+		},
+		"AlarmLogHistoryDataInfo": {
+			"type": "object",
+			"properties": {
+				"hostname": {
+					"description": "IP address of device on Globiots system.",
+					"type": "string"
+				},
+				"address": {
+					"description": "address `hexadecimal` on memory map.",
+					"type": "string"
+				},
+				"timestamp": {
+					"description": "Iime of occurence in Epoch time GMT",
+					"type": "long"
+				},
+				"comment": {
+					"description": "Alarm commentation by user",
+					"type": "string"
+				},
+				"state": {
+					"title": "state",
+					"type": "string",
+					"enum": [
+						"0 – LOLO",
+						"1 – LO",
+						"2 – NORMAL",
+						"3 – HI",
+						"4 – HIHI"
+					]
+				},
+				"value": {
+					"description": "alarm value",
+					"type": "string"
+				},
+				"status": {
+					"description": "alarm status (\"ack\")",
+					"type": "string"
+				},
+				"user": {
+					"description": "User’s name of acknowledging",
+					"type": "string"
+				},
+				"solution": {
+					"description": "Commentation of user after acknowledging",
+					"type": "string"
+				}
+			}
+		},
+		"AlarmLogDetailDataInfo": {
+			"type": "object",
+			"properties": {
+				"hostname": {
+					"description": "IP address of device on Globiots system.",
+					"type": "string"
+				},
+				"address": {
+					"description": "address `hexadecimal` on memory map.",
+					"type": "string"
+				},
+				"timestamp": {
+					"description": "Iime of occurence in Epoch time GMT",
+					"type": "long"
+				},
+				"comment": {
+					"description": "Alarm commentation by user",
+					"type": "string"
+				},
+				"state": {
+					"title": "state",
+					"type": "string",
+					"enum": [
+						"0 – LOLO",
+						"1 – LO",
+						"2 – NORMAL",
+						"3 – HI",
+						"4 – HIHI"
+					]
+				},
+				"value": {
+					"description": "alarm value",
+					"type": "string"
+				},
+				"status": {
+					"description": "alarm status (\"ack\")",
+					"type": "string"
+				}
+			}
+		},
+		"EventLogHistoryDataInfo": {
+			"type": "object",
+			"properties": {
+				"hostname": {
+					"description": "IP address of device on Globiots system.",
+					"type": "string"
+				},
+				"address": {
+					"description": "address `hexadecimal` on memory map.",
+					"type": "string"
+				},
+				"timestamp": {
+					"description": "Iime of occurence in Epoch time GMT",
+					"type": "long"
+				},
+				"comment": {
+					"description": "Event commentation by user",
+					"type": "string"
+				},
+				"state": {
+					"title": "state",
+					"type": "string"
+				},
+				"value": {
+					"description": "Event value",
+					"type": "string"
+				},
+				"priority": {
+					"title": "priority",
+					"type": "string"
+				},
+				"uniqueId": {
+					"title": "uniqueId",
+					"type": "string"
+				},
+				"eventName": {
+					"description": "The name definitions on Globiots system.",
+					"type": "string"
+				}
+			}
+		},
+		"ErrorMessage": {
+			"type": "object",
+			"required": [
+				"code",
+				"message"
+			],
+			"properties": {
+				"code": {
+					"type": "number",
+					"description": "The HTTP status code"
+				},
+				"message": {
+					"description": "A description of the error",
+					"type": "string"
+				}
+			}
+		}
+	},
+	"tags": [
+		{
+			"name": "Device"
+		},
+		{
+			"name": "Parameter Of Device"
+		},
+		{
+			"name": "Data Log"
+		},
+		{
+			"name": "Memmap Info"
+		},
+		{
+			"name": "Alarm Log Data"
+		},
+		{
+			"name": "Event Log Data"
+		},
+		{
+			"name": "WebSocket",
+			"description": {
+				"$ref": "globiots-apiv2.0-websocket.md"
+			}
+		}
+	]
+}

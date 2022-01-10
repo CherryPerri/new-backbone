@@ -1,0 +1,5 @@
+vUk4R1diw" elementId="org.eclipse.ui.ide.configureFilters" commandName="Filters..." description="Configure the filters to apply to the markers view" category="_PEld6Gx0Eeyp8vUk4R1diw"/>
+  <commands xmi:id="_PEvPKGx0Eeyp8vUk4R1diw" elementId="org.eclipse.eclemma.ui.importSession" commandName="Import Session..." category="_PEld2Wx0Eeyp8vUk4R1diw"/>
+  <commands xmi:id="_PEvPKWx0Eeyp8vUk4R1diw" elementId="org.eclipse.ui.navigate.previousTab" commandName="Previous Tab" description="Switch to the previous tab" category="_PEld8Gx0Eeyp8vUk4R1diw"/>
+  <commands xmi:id="_PEvPKmx0Eeyp8vUk4R1diw" elementId="org.eclipse.wst.jsdt.ui.edit.text.java.search.declarations.in.hierarchy" commandName="Declaration in Hierarchy" description="Search for declarations of the selected element in its hierarchy" category="_PEld_Gx0Eeyp8vUk4R1diw"/>
+  <commands xmi:id="_PEvPK2x0Eeyp8vUk4R1diw" elementId="org.eclipse.ui.dialogs.openMessageDialog" commandName="Open Me

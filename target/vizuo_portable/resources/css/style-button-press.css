@@ -1,0 +1,60 @@
+/* vanchung.nguyen add new-dashboard start  */
+.press{
+	text-align: center;
+	display: inline-block;
+}
+.btn-press-live-view {
+	font-size: 20px;
+}
+button:focus {
+  outline: none
+}
+
+div.press button {
+  color: #fff;
+  background-color: #1bade1;
+  border: none;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  border-radius: 50%;
+  -webkit-box-shadow: 0 6px #27496d;
+  -moz-box-shadow: 0 6px #27496d;
+  box-shadow: 0 6px #27496d;
+}
+div.press button:hover,
+div.press button.hover {
+  background-color: #1bade1
+}
+div.press button:active,
+div.press button.active {
+  background-color: #1bade1;
+  -webkit-box-shadow: 0 3px #27496d;
+  -moz-box-shadow: 0 3px #27496d;
+  box-shadow: 0 3px #27496d;
+  -webkit-transform: translateY(5px);
+  -moz-transform: translateY(5px);
+  -ms-transform: translateY(5px);
+  -o-transform: translateY(5px);
+  transform: translateY(5px);
+}
+@media all and (max-width: 960px) { 
+  button {
+    font-size: 30px
+  }
+}
+@media all and (max-width: 720px) { 
+  button {
+    font-size: 20px;
+    padding: 10px 30px;
+  }
+}
+@media all and (max-width: 540px) { 
+  div {
+    text-align: center
+  }
+  button {
+    margin: 0 10px 20px 10px;
+    font-size: 16px;
+  }
+}
+/* vanchung.nguyen add new-dashboard end  */

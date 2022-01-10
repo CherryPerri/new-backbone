@@ -1,0 +1,5 @@
+ elementId="org.eclipse.egit.ui.history.CompareWithHead" commandName="Compare with HEAD Revision" category="_PEld6Gx0Eeyp8vUk4R1diw"/>
+  <commands xmi:id="_PEv2DWx0Eeyp8vUk4R1diw" elementId="org.eclipse.jdt.ui.edit.text.java.organize.imports" commandName="Organize Imports" description="Evaluate all required imports and replace the current imports" category="_PEmE5Gx0Eeyp8vUk4R1diw"/>
+  <commands xmi:id="_PEv2Dmx0Eeyp8vUk4R1diw" elementId="org.eclipse.ui.ide.markers.copyDescription" commandName="Copy Description To Clipboard" description="Copies markers description field to the clipboard" category="_PEld0Gx0Eeyp8vUk4R1diw"/>
+  <commands xmi:id="_PEv2D2x0Eeyp8vUk4R1diw" elementId="org.eclipse.debug.ui.commands.DropToFrame" commandName="Drop to Frame" description="Drop to Frame" category="_PEld3mx0Eeyp8vUk4R1diw"/>
+  <commands xmi:id="_PEv2EGx0Eeyp8vUk4R1diw" elementId="org
